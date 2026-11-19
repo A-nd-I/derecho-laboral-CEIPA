@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="showroom">
+  <title>Derecho laboral colombiano — Guía visual para emprendedores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Showroom) */
+      --background: #fbfbfd;
+      --surface-container-low: #f5f5f7;
+      --surface-container: #e8e8ed;
+      --surface-container-high: #dcdce1;
+
+      /* Ink */
+      --on-surface: #1d1d1f;
+      --on-surface-variant: #6e6e73;
+
+      /* Rules */
+      --outline: #d2d2d7;
+      --outline-variant: #e5e5ea;
+
+      /* Accents */
+      --primary: #006bd6;
+      --on-primary: #ffffff;
+      --primary-container: #e8f1fd;
+      --on-primary-container: #0058b0;
+      --secondary: #bf4800;
+      --secondary-container: #fdf0e8;
+      --tertiary: #1d1d1f;
+      --error: #d70015;
+      --error-container: #fdebec;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #006bd6;
+      --data-2: #bf4800;
+      --data-3: #248a3d;
+      --data-4: #8944ab;
+      --data-context: #aeaeb2;
+
+      /* Semantic */
+      --positive: #248a3d;
+      --positive-container: #eaf6ed;
+      --warning: #bf4800;
+      --focus: #006bd6;
+      --petroleum-blue: #0f4c5c;
+
+      /* Fonts */
+      --font-headline: 'Inter Tight', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-label: 'Inter', sans-serif;
+
+      /* Shape */
+      --rounded: 9999px;
+      --rounded-md: 0.75rem;
+      --rounded-lg: 1.25rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --headline-tracking: -0.035em;
+      --figure-tracking: -0.03em;
+      --tile-shadow-hover: 0 8px 28px rgb(0 0 0 / 0.08);
+      --chevron: " \203A";
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2.5rem, 1.5rem + 4vw, 4.25rem);
+      --headline-size: clamp(1.875rem, 1.25rem + 2vw, 2.75rem);
+      --subhead-size: clamp(1.1875rem, 1.05rem + 0.5vw, 1.4375rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 5.5rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 92px 0 0;
+      background: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+
+    /* Fixed utility navbar */
+    .site-nav {
+      position: fixed;
+      top: 12px;
+      left: clamp(12px, 2vw, 24px);
+      right: clamp(12px, 2vw, 24px);
+      z-index: 1000;
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: 4px 12px;
+      background: rgb(251 251 253 / 0.97);
+      border: 2px solid var(--petroleum-blue);
+      border-radius: 22px;
+      box-shadow: 0 2px 12px rgb(0 0 0 / 0.06);
+      backdrop-filter: blur(12px);
+    }
+    .site-nav-title {
+      color: var(--on-surface);
+      font-family: var(--font-headline);
+      font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .site-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .site-nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      background: var(--background);
+      color: var(--on-surface);
+      font: 600 0.875rem var(--font-body);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--dur-short) ease, color var(--dur-short) ease, border-color var(--dur-short) ease;
+    }
+    .site-nav-button:hover {
+      background: var(--petroleum-blue);
+      color: #ffffff;
+      border-color: var(--petroleum-blue);
+    }
+    @media (max-width: 640px) {
+      body { padding-top: 144px; }
+      .site-nav { top: 8px; left: 8px; right: 8px; min-height: 104px; align-items: flex-start; flex-direction: column; gap: 8px; border-radius: 16px; }
+      .site-nav-title { white-space: normal; }
+      .site-nav-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+      .site-nav-button { min-height: 36px; padding: 6px 11px; font-size: 0.8rem; }
+    }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Band layout (Showroom tonal alternation) */
+    .band {
+      padding-block: var(--space-2xl);
+      padding-inline: var(--space-lg);
+      background: var(--background);
+    }
+    .band.alt {
+      background: var(--surface-container-low);
+    }
+    .band-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    section[id], footer[id] { scroll-margin-top: 104px; }
+    .band-inner * { min-width: 0; }
+
+    /* Centered Headline Stack (Showroom Treatment #1) */
+    .headline-stack {
+      text-align: center;
+      padding-block: var(--space-lg) var(--space-xl);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--secondary);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+    .headline-stack h1 {
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 700;
+      letter-spacing: var(--headline-tracking);
+      line-height: 1.05;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .headline-stack h2 {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .headline-stack .lede {
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+      line-height: 1.45;
+      max-width: 52ch;
+      margin: var(--space-md) auto 0;
+    }
+
+    /* Borderless Rounded Tiles (Showroom Treatment #2) */
+    .tile {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl) var(--space-lg);
+      border: 0;
+      transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+    .band.alt .tile {
+      background: var(--background);
+    }
+    .tile.interactive:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--tile-shadow-hover);
+    }
+    .tile-title {
+      font-family: var(--font-headline);
+      font-size: var(--subhead-size);
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      margin: 0 0 var(--space-xs);
+      color: var(--on-surface);
+    }
+    .tile-subtitle {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin: 0 0 var(--space-md);
+      line-height: 1.45;
+    }
+
+    /* Key-figure tiles */
+    .tile.figure {
+      text-align: center;
+      padding: var(--space-lg) var(--space-md);
+    }
+    .tile.figure .label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-xs);
+    }
+    .tile.figure .value {
+      font-family: var(--font-headline);
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: 700;
+      letter-spacing: var(--figure-tracking);
+      line-height: 1.05;
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+    }
+    .tile.figure .caption {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      font-weight: 500;
+      margin-top: var(--space-xs);
+    }
+
+    /* Grids */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-lg);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg);
+    }
+    .grid-asymmetric {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+    }
+    .grid-asymmetric-rev {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+      gap: var(--space-lg);
+    }
+
+    /* Pills, chips, buttons (Showroom Treatment #3) */
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      text-decoration: none;
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      min-height: 44px;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .pill-link:hover {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .pill-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--rounded-full);
+      background: var(--primary);
+      color: var(--on-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      background: var(--primary);
+      color: var(--on-primary);
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: var(--space-sm) var(--space-lg);
+      min-height: 44px;
+      border: 0;
+      cursor: pointer;
+      transition: opacity var(--dur-micro) var(--ease-out);
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: var(--space-sm) var(--space-lg);
+      min-height: 44px;
+      border: 0;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .btn-secondary:hover { background: var(--surface-container-high); }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border-radius: var(--rounded-full);
+      padding: 4px 12px;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+    }
+    .chip.warn {
+      background: var(--secondary-container);
+      color: var(--secondary);
+    }
+    .chip.ok {
+      background: var(--positive-container);
+      color: var(--positive);
+    }
+    .chip.danger {
+      background: var(--error-container);
+      color: var(--error);
+    }
+
+    /* Segmented control */
+    .segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      background: var(--surface-container);
+      padding: 4px;
+      border-radius: var(--rounded);
+    }
+    .seg-btn {
+      background: transparent;
+      color: var(--on-surface);
+      border: 0;
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      min-height: 38px;
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-in-out), color var(--dur-micro) var(--ease-in-out);
+    }
+    .seg-btn[aria-pressed="true"] {
+      background: var(--background);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Inputs & labels */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      color: var(--on-surface);
+    }
+    .input-pill, .select-pill {
+      background: var(--background);
+      color: var(--on-surface);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      padding: 10px 16px;
+      min-height: 44px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-variant-numeric: tabular-nums;
+      width: 100%;
+    }
+    .band:not(.alt) .input-pill, .band:not(.alt) .select-pill {
+      background: var(--background);
+    }
+    .select-pill {
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .input-pill:focus, .select-pill:focus {
+      border-color: var(--primary);
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+      height: 6px;
+    }
+
+    /* Toggle Switch List (Eje 1 Contrato Realidad) */
+    .toggle-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-md);
+      padding: var(--space-sm) var(--space-md);
+      min-height: 52px;
+      cursor: pointer;
+      border: 0;
+      text-align: left;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      transition: background-color var(--dur-micro) var(--ease-in-out);
+    }
+    .toggle-item[aria-pressed="true"] {
+      background: var(--error-container);
+      color: var(--on-surface);
+    }
+    .switch-track {
+      flex-shrink: 0;
+      width: 40px;
+      height: 24px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-high);
+      position: relative;
+      transition: background-color var(--dur-micro) var(--ease-in-out);
+    }
+    .toggle-item[aria-pressed="true"] .switch-track {
+      background: var(--error);
+    }
+    .switch-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: var(--rounded-full);
+      background: var(--background);
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: transform var(--dur-micro) var(--ease-in-out);
+    }
+    .toggle-item[aria-pressed="true"] .switch-thumb {
+      transform: translateX(16px);
+    }
+
+    /* SVG Diagram wrappers */
+    .svg-box {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svg-box svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Charts */
+    .chart-wrap {
+      position: relative;
+      min-height: 250px;
+      width: 100%;
+    }
+    .chart-wrap-tall {
+      position: relative;
+      min-height: 290px;
+      width: 100%;
+    }
+
+    /* Modality mini-cards inside Eje 1 */
+    .modality-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    .mini-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-md);
+      padding: var(--space-md);
+    }
+    .band:not(.alt) .mini-panel {
+      background: var(--background);
+    }
+    .mini-panel strong {
+      display: block;
+      font-size: 0.9375rem;
+      margin-bottom: 4px;
+    }
+    .mini-panel span {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      line-height: 1.35;
+    }
+
+    /* RIT Worker Matrix */
+    .worker-matrix {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      gap: 8px;
+      padding: var(--space-md);
+      background: var(--background);
+      border-radius: var(--rounded-md);
+    }
+    .worker-dot {
+      aspect-ratio: 1;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
+    }
+    .worker-dot.active {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .worker-dot.over-limit {
+      background: var(--secondary);
+      color: var(--on-primary);
+    }
+
+    /* Due Process 7-step flow */
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+    .pipe-step {
+      background: var(--background);
+      border-radius: var(--rounded-md);
+      padding: var(--space-md) var(--space-sm);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .band:not(.alt) .pipe-step {
+      background: var(--surface-container-low);
+    }
+    .pipe-num {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--rounded-full);
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      font-weight: 700;
+      font-size: 0.8125rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pipe-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--on-surface);
+    }
+
+    /* Timeline bar for Periodo de Prueba */
+    .timeline-bar {
+      height: 28px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container);
+      overflow: hidden;
+      display: flex;
+      margin-block: var(--space-md);
+    }
+    .timeline-fill {
+      background: var(--primary);
+      color: var(--on-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      padding-inline: 8px;
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    /* Clean table */
+    .clean-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+    }
+    .clean-table th {
+      text-align: left;
+      font-weight: 500;
+      color: var(--on-surface-variant);
+      font-size: var(--label-size);
+      padding: var(--space-sm) var(--space-sm);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .clean-table td {
+      padding: var(--space-md) var(--space-sm);
+      border-bottom: 1px solid var(--outline-variant);
+      font-variant-numeric: tabular-nums;
+      vertical-align: top;
+    }
+    .clean-table tr:last-child td { border-bottom: 0; }
+
+    /* Collapsible details for secondary normativity */
+    details.norm-drawer {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    details.norm-drawer summary {
+      cursor: pointer;
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+    }
+    details.norm-drawer summary::-webkit-details-marker { display: none; }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer.band {
+      padding-block: var(--space-xl);
+      border-top: 1px solid var(--outline-variant);
+    }
+    .footer-note {
+      text-align: center;
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+      max-width: 68ch;
+      margin: 0 auto;
+    }
+    .risk-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      border: 1px solid var(--outline-variant);
+      border-left: 4px solid var(--secondary);
+      border-radius: var(--rounded-md);
+      background: var(--background);
+    }
+    .risk-callout strong { display: block; margin-bottom: 2px; }
+    .risk-callout p { margin: 0; color: var(--on-surface-variant); font-size: 0.9rem; }
+    .contribution-grid { display: grid; gap: var(--space-sm); margin-bottom: var(--space-md); }
+    .contribution-card { padding: var(--space-md); }
+    .contribution-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); padding: 5px 0; font-size: 0.875rem; }
+    .contribution-row strong { text-align: right; font-variant-numeric: tabular-nums; }
+    .contribution-total { margin-top: 4px; border-top: 1px solid var(--outline-variant); font-weight: 700; }
+    .contribution-note { margin: var(--space-sm) 0 0; color: var(--on-surface-variant); font-size: 0.75rem; line-height: 1.45; }
+    .cost-controls { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: var(--space-md); }
+    .cost-inputs { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; gap: var(--space-md); }
+    .cost-exoneration { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); border-radius: var(--rounded-md); background: var(--surface-container-low); }
+    .cost-exoneration .toggle-item { flex: 1 1 230px; max-width: none !important; }
+    .cost-exoneration .contribution-note { flex-basis: 100%; margin: 0; }
+    .cost-ibc-note { margin: var(--space-sm) 0 var(--space-md); color: var(--on-surface-variant); font-size: 0.8125rem; }
+    .cost-summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); margin-bottom: var(--space-md); padding: var(--space-md) var(--space-lg); border: 1px solid var(--primary-container); border-radius: var(--rounded-md); background: var(--primary-container); }
+    .cost-summary-title { margin: 0; font-size: 0.9rem; font-weight: 700; }
+    .cost-summary-note { margin: 3px 0 0; color: var(--on-surface-variant); font-size: 0.75rem; }
+    .cost-summary-amount { color: var(--on-primary-container); font-family: var(--font-headline); font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); font-weight: 700; letter-spacing: var(--figure-tracking); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .cost-details-grid { display: grid; grid-template-columns: 1.05fr 0.95fr 1.15fr; align-items: start; gap: var(--space-md); }
+    .cost-chart-panel { min-width: 0; padding: var(--space-md); }
+    .benefit-section { margin-top: var(--space-lg); }
+    .benefit-section > h3 { margin-bottom: var(--space-sm); }
+    .cost-footer-note { margin: var(--space-sm) 0 0; color: var(--on-surface-variant); font-size: 0.75rem; }
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1100;
+      display: grid;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      background: var(--petroleum-blue);
+      color: #ffffff;
+      box-shadow: 0 5px 18px rgb(0 0 0 / 0.22);
+      text-decoration: none;
+      transition: transform var(--dur-short) ease, box-shadow var(--dur-short) ease;
+    }
+    .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgb(0 0 0 / 0.26); }
+    .back-to-top svg { width: 24px; height: 24px; }
+
+    /* Responsive adjustments */
+    @media (max-width: 920px) {
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2, .grid-asymmetric, .grid-asymmetric-rev { grid-template-columns: 1fr; }
+      .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cost-controls { grid-template-columns: 1fr; }
+      .cost-details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cost-chart-panel { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .band { padding-inline: var(--space-md); padding-block: var(--space-xl); }
+      section[id], footer[id] { scroll-margin-top: 128px; }
+      .back-to-top { right: 16px; bottom: 16px; width: 50px; height: 50px; }
+      .cost-inputs, .cost-details-grid { grid-template-columns: 1fr; }
+      .cost-chart-panel { grid-column: auto; }
+      .cost-summary { align-items: flex-start; flex-direction: column; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
+      .toggle-list { grid-template-columns: 1fr; }
+      .modality-row { grid-template-columns: 1fr; }
+      .worker-matrix { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .pipeline { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <nav class="site-nav" aria-label="Navegación principal">
+    <div class="site-nav-title">CEIPA - Práctica derecho laboral Nov 2026</div>
+    <div class="site-nav-actions">
+      <a class="site-nav-button" href="https://ceipa.edu.co/" target="_blank" rel="noopener noreferrer">Ir a CEIPA</a>
+      <a class="site-nav-button" href="https://drive.google.com/drive/folders/1yTsMYq5sTC8AXrm0jd3wGV69NV26X2tX?usp=drive_link" target="_blank" rel="noopener noreferrer">Plantillas de contratos</a>
+      <a class="site-nav-button" href="#contacto">Contacto</a>
+    </div>
+  </nav>
+  <a class="back-to-top" href="#top" aria-label="Volver al inicio" title="Volver al inicio">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <!-- HERO BAND -->
+  <header class="band">
+    <div class="band-inner">
+      <div class="headline-stack">
+        <span class="eyebrow">Guía visual para emprendedores · Vigente noviembre de 2026</span>
+        <h1>Derecho laboral colombiano sin enredos</h1>
+        <p class="tile-subtitle" style="margin: 0 0 var(--space-sm); font-weight: 600; color: var(--petroleum-blue);">
+          Docente: Dra. Maritza Benítez Buriticá
+        </p>
+        <p class="lede">Cinco ejes prácticos y visuales para que emprendedores y empresas comprendan sus obligaciones laborales, calculen costos y reduzcan riesgos.</p>
+        <nav class="nav-pills" aria-label="Navegación por los cinco ejes">
+          <a class="pill-link" href="#eje-1"><span class="pill-num">1</span> Contratación</a>
+          <a class="pill-link" href="#eje-2"><span class="pill-num">2</span> Costos y prestaciones</a>
+          <a class="pill-link" href="#eje-3"><span class="pill-num">3</span> Jornada 42 h y recargos</a>
+          <a class="pill-link" href="#eje-4"><span class="pill-num">4</span> Reglamento (RIT)</a>
+          <a class="pill-link" href="#eje-5"><span class="pill-num">5</span> Terminación y prueba</a>
+        </nav>
+      </div>
+
+      <!-- 4 Key Figures Snapshot -->
+      <div class="grid-4">
+        <div class="tile figure">
+          <div class="label">Jornada máxima</div>
+          <div class="value">42 h</div>
+          <div class="caption">Semanal vigente nov. 2026</div>
+        </div>
+        <div class="tile figure">
+          <div class="label">Recargo dominical</div>
+          <div class="value">90 %</div>
+          <div class="caption">Sube a 100 % en jul. 2027</div>
+        </div>
+        <div class="tile figure">
+          <div class="label">Contrato laboral</div>
+          <div class="value">3</div>
+          <div class="caption">Elementos del Art. 23 CST</div>
+        </div>
+        <div class="tile figure">
+          <div class="label">Umbral RIT comercial</div>
+          <div class="value">&gt; 5</div>
+          <div class="caption">Trabajadores permanentes</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- EJE 1: TIPOS DE CONTRATACIÓN Y CONTRATO REALIDAD -->
+  <section id="eje-1" class="band alt">
+    <div class="band-inner">
+      <div class="headline-stack reveal">
+        <span class="eyebrow">Eje 1 · Tipos de contratación</span>
+        <h2>¿Incorporas a tu equipo o compras un entregable?</h2>
+        <p class="lede">La realidad diaria manda sobre el título del contrato. La relación laboral se configura cuando concurren los tres elementos: prestación personal del servicio, remuneración y subordinación continuada.</p>
+      </div>
+
+      <!-- Visual Comparison: Contrato Laboral vs Prestación de Servicios -->
+      <div class="grid-2 reveal">
+        <!-- Left: Contrato Laboral -->
+        <div class="tile">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-sm);">
+            <h3 class="tile-title" style="margin:0;">Contrato de trabajo</h3>
+            <span class="chip">Art. 23 CST</span>
+          </div>
+          <p class="tile-subtitle">Concurren estos tres elementos simultáneos:</p>
+
+          <!-- SVG Visual Triad -->
+          <div class="svg-box" aria-hidden="true">
+            <svg viewBox="0 0 420 175" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="18" width="122" height="72" rx="14" fill="var(--primary-container)"/>
+              <text x="71" y="48" text-anchor="middle" fill="var(--on-primary-container)" font-family="Inter, sans-serif" font-size="13" font-weight="600">1. Prestación</text>
+              <text x="71" y="66" text-anchor="middle" fill="var(--on-primary-container)" font-family="Inter, sans-serif" font-size="12">personal</text>
+
+              <text x="141" y="59" text-anchor="middle" fill="var(--on-surface-variant)" font-family="Inter, sans-serif" font-size="18" font-weight="700">+</text>
+
+              <rect x="150" y="18" width="122" height="72" rx="14" fill="var(--secondary-container)"/>
+              <text x="211" y="48" text-anchor="middle" fill="var(--secondary)" font-family="Inter, sans-serif" font-size="13" font-weight="600">2. Subordinación</text>
+              <text x="211" y="66" text-anchor="middle" fill="var(--secondary)" font-family="Inter, sans-serif" font-size="12">horario y órdenes</text>
+
+              <text x="281" y="59" text-anchor="middle" fill="var(--on-surface-variant)" font-family="Inter, sans-serif" font-size="18" font-weight="700">+</text>
+
+              <rect x="290" y="18" width="120" height="72" rx="14" fill="var(--primary-container)"/>
+              <text x="350" y="48" text-anchor="middle" fill="var(--on-primary-container)" font-family="Inter, sans-serif" font-size="13" font-weight="600">3. Remuneración</text>
+              <text x="350" y="66" text-anchor="middle" fill="var(--on-primary-container)" font-family="Inter, sans-serif" font-size="12">salario</text>
+
+              <path d="M 210 96 L 210 116" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="204,114 216,114 210,123" fill="var(--primary)"/>
+
+              <rect x="65" y="128" width="290" height="36" rx="18" fill="var(--primary)"/>
+              <text x="210" y="151" text-anchor="middle" fill="var(--on-primary)" font-family="Inter, sans-serif" font-size="13" font-weight="600">Genera prestaciones y seguridad social</text>
+            </svg>
+          </div>
+
+          <!-- Three Modalities Visual Strip -->
+          <div class="modality-row">
+            <div class="mini-panel">
+              <strong>Término fijo</strong>
+              <span>Por escrito, máx. 4 años. Ej.: auxiliar por 8 meses.</span>
+            </div>
+            <div class="mini-panel">
+              <strong>Indefinido</strong>
+              <span>Cargo permanente sin fecha fin. Ej.: gerente comercial.</span>
+            </div>
+            <div class="mini-panel">
+              <strong>Obra o labor</strong>
+              <span>Termina con la obra. Ej.: remodelación puntual.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Prestación de Servicios -->
+        <div class="tile">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-sm);">
+            <h3 class="tile-title" style="margin:0;">Prestación de servicios</h3>
+            <span class="chip ok">Autonomía real</span>
+          </div>
+          <p class="tile-subtitle">Para expertos externos que entregan un resultado sin horario ni jefe directo:</p>
+
+          <!-- SVG Visual Autonomy Flow -->
+          <div class="svg-box" aria-hidden="true">
+            <svg viewBox="0 0 420 175" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="20" width="175" height="68" rx="14" fill="var(--positive-container)"/>
+              <text x="107" y="49" text-anchor="middle" fill="var(--positive)" font-family="Inter, sans-serif" font-size="13" font-weight="600">Autonomía técnica</text>
+              <text x="107" y="67" text-anchor="middle" fill="var(--positive)" font-family="Inter, sans-serif" font-size="12">y administrativa</text>
+
+              <rect x="225" y="20" width="175" height="68" rx="14" fill="var(--positive-container)"/>
+              <text x="312" y="49" text-anchor="middle" fill="var(--positive)" font-family="Inter, sans-serif" font-size="13" font-weight="600">Metas y entregables</text>
+              <text x="312" y="67" text-anchor="middle" fill="var(--positive)" font-family="Inter, sans-serif" font-size="12">sin subordinación</text>
+
+              <path d="M 210 96 L 210 116" stroke="var(--positive)" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="204,114 216,114 210,123" fill="var(--positive)"/>
+
+              <rect x="65" y="128" width="290" height="36" rx="18" fill="var(--surface-container)"/>
+              <text x="210" y="151" text-anchor="middle" fill="var(--on-surface)" font-family="Inter, sans-serif" font-size="13" font-weight="600">Contratista independiente · Pago por honorarios</text>
+            </svg>
+          </div>
+
+          <div class="modality-row">
+            <div class="mini-panel">
+              <strong>Asesoría legal</strong>
+              <span>Abogado externo por concepto o proceso.</span>
+            </div>
+            <div class="mini-panel">
+              <strong>Estudio técnico</strong>
+              <span>Ingeniero para dictamen o plano puntual.</span>
+            </div>
+            <div class="mini-panel">
+              <strong>Consultoría</strong>
+              <span>Proyecto acotado con entregas pactadas.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Contrato Realidad Detector -->
+      <div class="tile reveal" style="margin-top: var(--space-lg);">
+        <div class="grid-asymmetric-rev" style="align-items: center;">
+          <!-- Left: Gauge & Verdict -->
+          <div style="text-align: center; padding: var(--space-md);">
+            <span class="chip warn" id="reality-badge">Simulador interactivo</span>
+            <h3 class="tile-title" style="margin-top: var(--space-sm);">Detector de Contrato Realidad</h3>
+            <p class="tile-subtitle" style="margin-bottom: var(--space-sm);">Activa las señales de subordinación que ocurren con un contratista. Son indicios para revisar, no una conclusión por sí solos: deben analizarse junto con la prestación personal y la remuneración.</p>
+
+            <!-- SVG Risk Gauge -->
+            <div class="svg-box" style="max-width: 280px; margin: 0 auto;" aria-hidden="true">
+              <svg viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Track arcs -->
+                <path d="M 30 130 A 100 100 0 0 1 92 38" fill="none" stroke="var(--data-3)" stroke-width="18" stroke-linecap="round"/>
+                <path d="M 98 35 A 100 100 0 0 1 162 35" fill="none" stroke="var(--secondary)" stroke-width="18" stroke-linecap="round"/>
+                <path d="M 168 38 A 100 100 0 0 1 230 130" fill="none" stroke="var(--error)" stroke-width="18" stroke-linecap="round"/>
+                <!-- Needle group -->
+                <g id="gauge-needle" style="transform-origin: 130px 130px; transition: transform 300ms var(--ease-out);">
+                  <line x1="130" y1="130" x2="130" y2="46" stroke="var(--on-surface)" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="130" cy="130" r="9" fill="var(--on-surface)"/>
+                </g>
+                <text x="26" y="146" font-family="Inter, sans-serif" font-size="11" fill="var(--on-surface-variant)">Seguro</text>
+                <text x="130" y="18" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="var(--on-surface-variant)">Alerta</text>
+                <text x="234" y="146" text-anchor="end" font-family="Inter, sans-serif" font-size="11" fill="var(--on-surface-variant)">Demanda</text>
+              </svg>
+            </div>
+
+            <div id="reality-verdict" style="margin-top: var(--space-sm); font-family: var(--font-headline); font-size: 1.25rem; font-weight: 700;">
+              0 de 6 indicios de subordinación
+            </div>
+            <p id="reality-detail" style="font-size: 0.875rem; color: var(--on-surface-variant); margin: var(--space-xs) auto 0; max-width: 34ch;">
+              Analiza los hechos en conjunto: prestación personal, remuneración y subordinación continuada.
+            </p>
+          </div>
+
+          <!-- Right: 6 Operational Toggles -->
+          <div>
+            <div class="toggle-list" id="reality-toggles">
+              <button type="button" class="toggle-item" data-idx="0" aria-pressed="false" onclick="toggleRealityFlag(0)">
+                <span>Cumple horario lun–vie</span>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </button>
+              <button type="button" class="toggle-item" data-idx="1" aria-pressed="false" onclick="toggleRealityFlag(1)">
+                <span>Tiene jefe directo asignado</span>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </button>
+              <button type="button" class="toggle-item" data-idx="2" aria-pressed="false" onclick="toggleRealityFlag(2)">
+                <span>Recibe órdenes permanentes</span>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </button>
+              <button type="button" class="toggle-item" data-idx="3" aria-pressed="false" onclick="toggleRealityFlag(3)">
+                <span>Pide permisos para ausentarse</span>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </button>
+              <button type="button" class="toggle-item" data-idx="4" aria-pressed="false" onclick="toggleRealityFlag(4)">
+                <span>Pago fijo mensual igual</span>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </button>
+              <button type="button" class="toggle-item" data-idx="5" aria-pressed="false" onclick="toggleRealityFlag(5)">
+                <span>Mismas funciones de planta</span>
+                <span class="switch-track"><span class="switch-thumb"></span></span>
+              </button>
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; gap: var(--space-xs); margin-top: var(--space-md); align-items:center;">
+              <span style="font-size: 0.8125rem; color: var(--on-surface-variant); font-weight: 500; margin-right: 4px;">Blindaje rápido:</span>
+              <span class="chip">Pactar entregables</span>
+              <span class="chip">Sin horario fijo</span>
+              <span class="chip">Fuera de jerarquía</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Demandas por contrato realidad</strong><p>Prevención: elegir la modalidad contractual de acuerdo con los hechos y revisar si concurren prestación personal, remuneración y subordinación continuada.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJE 2: SEGURIDAD SOCIAL Y PRESTACIONES SOCIALES -->
+  <section id="eje-2" class="band">
+    <div class="band-inner">
+      <div class="headline-stack reveal">
+        <span class="eyebrow">Eje 2 · Seguridad social y prestaciones</span>
+        <h2>El costo real detrás de un salario</h2>
+        <p class="lede">Simula el impacto mensual de contratar con vínculo laboral: aportes de ley y provisiones de prestaciones.</p>
+      </div>
+
+      <!-- Interactive Cost Simulator -->
+      <div class="tile reveal">
+        <div class="cost-controls">
+          <div class="cost-inputs">
+            <div class="field">
+              <label for="salary-slider">Salario base mensual (COP)</label>
+              <input type="range" id="salary-slider" min="1750905" max="15000000" step="100000" value="1750905" oninput="syncSalaryFromSlider(this.value)">
+            </div>
+            <div class="field">
+              <label for="salary-number">Valor exacto ($)</label>
+              <input type="number" id="salary-number" class="input-pill" min="1750905" max="15000000" step="1" value="1750905" oninput="syncSalaryFromNumber(this.value)">
+            </div>
+          </div>
+          <div class="cost-exoneration">
+            <button type="button" id="exon-toggle" class="toggle-item" aria-pressed="false" onclick="toggleExoneracion()">
+              <span>Aplicar exoneración legal</span>
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+            </button>
+            <span class="chip" id="cost-multiplier-chip">Costo adicional del empleador: +51,33 %</span>
+            <p class="contribution-note">Actívala solo si aplican los requisitos del artículo 114-1 del Estatuto Tributario.</p>
+          </div>
+        </div>
+
+        <p class="cost-ibc-note">El cálculo usa el salario ingresado como IBC de referencia. Confirma el IBC real según los pagos que constituyen salario.</p>
+
+        <div class="cost-summary">
+          <div>
+            <p class="cost-summary-title">Costo mensual estimado para el empleador</p>
+            <p class="cost-summary-note">Salario + aportes del empleador + provisiones. Sin ARL ni auxilio de transporte; los descuentos del trabajador van aparte.</p>
+          </div>
+          <div id="total-employer-cost" class="cost-summary-amount">$2.649.703</div>
+        </div>
+
+        <div class="cost-details-grid">
+          <div class="mini-panel cost-chart-panel">
+            <h3 class="tile-title" style="font-size:1rem; margin:0 0 var(--space-sm);">Composición mensual</h3>
+            <div class="chart-wrap">
+              <canvas id="salaryChart" aria-label="Gráfico de composición del costo laboral mensual"></canvas>
+            </div>
+            <p class="contribution-note">El gráfico muestra salario, aportes del empleador y prestaciones. No suma el descuento del trabajador.</p>
+          </div>
+
+          <div class="mini-panel contribution-card">
+            <h3 class="tile-title" style="font-size:1rem; margin:0 0 var(--space-sm);">Descuentos del trabajador</h3>
+            <div class="contribution-row"><span>Salud (4 % del IBC)</span><strong id="employee-health-value">$70.036</strong></div>
+            <div class="contribution-row"><span>Pensión (4 % del IBC)</span><strong id="employee-pension-value">$70.036</strong></div>
+            <div class="contribution-row contribution-total"><span>Total descontado (8 %)</span><strong id="employee-contributions-total">$140.072</strong></div>
+            <div class="contribution-row"><span>Salario neto estimado</span><strong id="employee-net-salary">$1.610.833</strong></div>
+            <p class="contribution-note">El neto no incluye el Fondo de Solidaridad Pensional, si aplica.</p>
+          </div>
+
+          <div class="mini-panel contribution-card">
+            <h3 class="tile-title" style="font-size:1rem; margin:0 0 var(--space-sm);">Aportes del empleador</h3>
+            <div class="contribution-row"><span>Salud (8,5 %)</span><strong id="employer-health-value">$148.827</strong></div>
+            <div class="contribution-row"><span>Pensión (12 %)</span><strong id="employer-pension-value">$210.109</strong></div>
+            <div class="contribution-row"><span>Caja de compensación (4 %)</span><strong id="employer-caja-value">$70.036</strong></div>
+            <div class="contribution-row"><span>SENA (2 %)</span><strong id="employer-sena-value">$35.018</strong></div>
+            <div class="contribution-row"><span>ICBF (3 %)</span><strong id="employer-icbf-value">$52.527</strong></div>
+            <div class="contribution-row"><span>ARL</span><strong>Variable · no incluida</strong></div>
+            <div class="contribution-row contribution-total"><span>Total aportes (sin ARL)</span><strong id="employer-contributions-total">$516.517</strong></div>
+            <p class="contribution-note">La exoneración puede modificar salud, SENA e ICBF cuando aplica.</p>
+          </div>
+        </div>
+
+        <div class="benefit-section">
+          <h3 class="tile-title" style="font-size:1rem;">Provisiones anuales de prestaciones</h3>
+          <div class="grid-4" style="gap: var(--space-sm);">
+            <div class="mini-panel">
+              <span style="color: var(--primary); font-weight: 600;">Prima anual</span>
+              <strong id="val-prima" style="font-size: 1.25rem; font-variant-numeric: tabular-nums;">$1.750.905</strong>
+              <span>30 días/año en 2 cuotas</span>
+            </div>
+            <div class="mini-panel">
+              <span style="color: var(--primary); font-weight: 600;">Cesantías anuales</span>
+              <strong id="val-cesantias" style="font-size: 1.25rem; font-variant-numeric: tabular-nums;">$1.750.905</strong>
+              <span>1 mes por año trabajado</span>
+            </div>
+            <div class="mini-panel">
+              <span style="color: var(--secondary); font-weight: 600;">Intereses (12 %)</span>
+              <strong id="val-intereses" style="font-size: 1.25rem; font-variant-numeric: tabular-nums;">$210.109</strong>
+              <span>12 % anual sobre cesantías</span>
+            </div>
+            <div class="mini-panel">
+              <span style="color: var(--positive); font-weight: 600;">Vacaciones anuales</span>
+              <strong id="val-vacaciones" style="font-size: 1.25rem; font-variant-numeric: tabular-nums;">$875.453</strong>
+              <span>15 días hábiles/año</span>
+            </div>
+          </div>
+        </div>
+        <p class="cost-footer-note">Otros costos, como dotación y novedades de nómina, pueden variar y no están calculados aquí.</p>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Sanciones y cobro de aportes omitidos</strong><p>Prevención: verificar afiliaciones, bases de cotización y pagos mensuales.</p></div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Reclamaciones por liquidaciones incorrectas</strong><p>Prevención: revisar nómina y provisiones de prestaciones de forma periódica.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJE 3: JORNADA LABORAL Y RECARGOS -->
+  <section id="eje-3" class="band alt">
+    <div class="band-inner">
+      <div class="headline-stack reveal">
+        <span class="eyebrow">Eje 3 · Jornada laboral y recargos</span>
+        <h2>42 horas y recargo dominical del 90 %</h2>
+        <p class="lede">Reglas aplicables desde el 15 de julio de 2026: jornada máxima general de 42 horas semanales. El recargo por trabajo en día de descanso obligatorio es del 90 % desde el 1 de julio de 2026.</p>
+      </div>
+
+      <!-- Two Charts Side by Side -->
+      <div class="grid-2 reveal">
+        <div class="tile">
+          <h3 class="tile-title">Reducción gradual de jornada máxima</h3>
+          <p class="tile-subtitle">Sin disminuir salario. Límite extra: 2 h/día y 12 h/semana.</p>
+          <div class="chart-wrap">
+            <canvas id="jornadaChart" aria-label="Evolución de la jornada máxima semanal de 48 a 42 horas"></canvas>
+          </div>
+        </div>
+
+        <div class="tile">
+          <h3 class="tile-title">Incremento del recargo dominical y festivo</h3>
+          <p class="tile-subtitle">Aplicable hoy en noviembre de 2026: 90 % adicional.</p>
+          <div class="chart-wrap">
+            <canvas id="dominicalChart" aria-label="Evolución del recargo dominical y festivo del 80 al 100 por ciento"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 24h Day/Night Dial + Hour Surcharge Calculator -->
+      <div class="tile reveal" style="margin-top: var(--space-lg);">
+        <div class="grid-asymmetric-rev" style="align-items: center;">
+          <!-- Left: SVG 24h Clock Diagram -->
+          <div style="text-align: center;">
+            <h3 class="tile-title">Franja diurna vs. nocturna (Ley 2466)</h3>
+            <p class="tile-subtitle" style="margin-bottom: var(--space-sm);">La jornada nocturna arranca a las 7:00 p. m. con recargo del 35 %.</p>
+            <div class="svg-box" style="max-width: 280px; margin: 0 auto;" aria-hidden="true">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background ring -->
+                <circle cx="130" cy="130" r="90" fill="none" stroke="var(--surface-container)" stroke-width="26"/>
+                <!-- Day arc: 6am (90deg / right-bottom? Let's put 12pm top, 6am left, 6pm right, 12am bottom) -->
+                <!-- In standard 24h top=12pm: 6am = -90deg (left), 7pm = +105deg -->
+                <!-- Let's draw clean 13h day (6am to 7pm = 195 deg) and 11h night (7pm to 6am = 165 deg) -->
+                <!-- Start at 6am = 180deg (x=40,y=130) going clockwise to 7pm = +15deg past right (x=216.9,y=153.3) -->
+                <path d="M 40 130 A 90 90 0 1 1 217 153" fill="none" stroke="var(--primary-container)" stroke-width="26"/>
+                <!-- Night arc: 7pm to 6am -->
+                <path d="M 217 153 A 90 90 0 0 1 40 130" fill="none" stroke="var(--tertiary)" stroke-width="26"/>
+
+                <!-- Labels around clock -->
+                <text x="130" y="24" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="var(--on-surface-variant)">12:00 m.</text>
+                <text x="130" y="246" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="var(--on-surface-variant)">12:00 a. m.</text>
+                <text x="16" y="134" text-anchor="start" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="var(--primary)">6 a. m.</text>
+                <text x="246" y="160" text-anchor="end" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="var(--secondary)">7 p. m.</text>
+
+                <!-- Center Legend -->
+                <text x="130" y="112" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="var(--primary)">Diurna · 6 a.m. – 7 p.m.</text>
+                <text x="130" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="var(--on-surface-variant)">Sin recargo ordinario</text>
+                <line x1="80" y1="142" x2="180" y2="142" stroke="var(--outline-variant)" stroke-width="1"/>
+                <text x="130" y="160" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="var(--on-surface)">Nocturna · 7 p.m. – 6 a.m.</text>
+                <text x="130" y="177" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="var(--secondary)">+35 % recargo</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Hour Calculator -->
+          <div>
+            <p class="tile-subtitle" style="margin-bottom: var(--space-md);">Ingresa el salario mensual ordinario fijo, sin incluir auxilio de transporte. El simulador calcula el día como salario ÷ 30 y la hora ordinaria como salario ÷ 210 (42 ÷ 6 × 30). Este divisor corresponde a una jornada de hasta 42 horas semanales desde el 15 de julio de 2026; si la jornada pactada es menor, el cálculo debe ajustarse.</p>
+            <div class="field" style="margin-bottom: var(--space-md);">
+              <label for="monthly-salary-input">Salario mensual ordinario ($)</label>
+              <input type="number" id="monthly-salary-input" class="input-pill" min="0" max="100000000" step="1" value="1750905" oninput="updateHourCalc()">
+            </div>
+            <div class="mini-panel" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--space-sm); margin-bottom:var(--space-md);">
+              <span>Valor del día (salario ÷ 30): <strong id="daily-salary-value">$58.364</strong></span>
+              <span>Valor hora ordinaria (salario ÷ 210): <strong id="hour-base-value">$8.338</strong></span>
+            </div>
+            <div class="field" style="margin-bottom: var(--space-md);">
+                <label for="hour-type-select">Tipo de hora o recargo</label>
+                <select id="hour-type-select" class="select-pill" onchange="updateHourCalc()">
+                  <option value="0">Ordinaria diurna (0 %)</option>
+                  <option value="0.25">Extra diurna (+25 %)</option>
+                  <option value="0.35">Recargo nocturno (+35 %)</option>
+                  <option value="0.75">Extra nocturna (+75 %)</option>
+                  <option value="0.90" selected>Descanso obligatorio / festivo (+90 % desde jul. 2026)</option>
+                  <option value="1.25">Dominical + nocturno (+90 % + 35 %)</option>
+                </select>
+            </div>
+
+            <!-- Visual Stacked Bar Breakdown -->
+            <div class="mini-panel" style="padding: var(--space-lg);">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap: var(--space-sm);">
+                <div>
+                  <div style="font-size: var(--label-size); color: var(--on-surface-variant); font-weight: 500;" id="hour-result-label">Total hora dominical (90 %)</div>
+                  <div id="hour-total-value" style="font-family: var(--font-headline); font-size: 2.25rem; font-weight: 700; letter-spacing: var(--figure-tracking); color: var(--on-surface); font-variant-numeric: tabular-nums;">
+                    $15.842
+                  </div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size: var(--label-size); color: var(--on-surface-variant);">Recargo adicional</div>
+                  <div id="hour-surcharge-value" style="font-family: var(--font-headline); font-size: 1.375rem; font-weight: 700; color: var(--secondary); font-variant-numeric: tabular-nums;">
+                    +$7.504
+                  </div>
+                </div>
+              </div>
+
+              <!-- Visual Proportion Strip -->
+              <div class="timeline-bar" style="height: 22px; margin-bottom: var(--space-xs);">
+                <div id="hour-bar-base" style="background: var(--primary); width: 52.6%; transition: width 220ms var(--ease-out);"></div>
+                <div id="hour-bar-extra" style="background: var(--secondary); width: 47.4%; transition: width 220ms var(--ease-out);"></div>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size: 0.75rem; color: var(--on-surface-variant);">
+                <span>Base ordinaria</span>
+                <span>Recargo legal acumulado</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.8125rem; color: var(--on-surface-variant); margin: var(--space-sm) 0 0;">
+              Importante: identifica si el trabajo dominical es ocasional o habitual para definir el descanso compensatorio.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Reclamaciones por horas extra y recargos</strong><p>Prevención: controlar la jornada máxima y registrar con precisión horas y novedades.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJE 4: REGLAMENTO INTERNO DE TRABAJO (RIT) -->
+  <section id="eje-4" class="band">
+    <div class="band-inner">
+      <div class="headline-stack reveal">
+        <span class="eyebrow">Eje 4 · Reglamento Interno de Trabajo (RIT)</span>
+        <h2>Orden interno y debido proceso disciplinario</h2>
+        <p class="lede">Verifica si tu empresa está obligada por ley (Art. 105 CST) y sigue los 7 pasos obligatorios antes de sancionar.</p>
+      </div>
+
+      <!-- Interactive RIT Obligation Checker -->
+      <div class="tile reveal">
+        <div class="grid-asymmetric" style="align-items: center;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: var(--space-sm); margin-bottom: var(--space-md);">
+              <h3 class="tile-title" style="margin:0;">Verificador de obligatoriedad (Art. 105 CST)</h3>
+              <span id="rit-status-chip" class="chip warn">RIT obligatorio</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: var(--space-md); align-items: end; margin-bottom: var(--space-md);">
+              <div class="field">
+                <label for="rit-sector">Actividad de tu empresa</label>
+                <select id="rit-sector" class="select-pill" onchange="updateRitChecker()">
+                  <option value="5" selected>Comercial (más de 5 trabajadores)</option>
+                  <option value="10">Industrial (más de 10 trabajadores)</option>
+                  <option value="10">Empresa mixta (más de 10 trabajadores)</option>
+                  <option value="20">Agrícola, ganadera o forestal (más de 20)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="rit-workers-slider">Trabajadores permanentes: <strong id="rit-workers-count">6</strong></label>
+                <input type="range" id="rit-workers-slider" min="1" max="30" step="1" value="6" oninput="updateRitChecker()">
+              </div>
+            </div>
+
+            <p id="rit-explanation" style="font-size: 0.9375rem; color: var(--on-surface-variant); margin: 0;">
+              Con 6 trabajadores permanentes en empresa comercial, superas el límite de 5 y debes tener RIT.
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap: 6px; margin-top: var(--space-md);">
+              <span class="chip">Horarios y descansos</span>
+              <span class="chip">Escala de faltas</span>
+              <span class="chip">SST y convivencia</span>
+              <span class="chip">Prevención acoso</span>
+            </div>
+          </div>
+
+          <!-- Visual Worker Dot Matrix -->
+          <div>
+            <div class="worker-matrix" id="worker-matrix" aria-label="Matriz visual de trabajadores permanentes frente al umbral del RIT"></div>
+            <div style="display:flex; justify-content:space-between; font-size: 0.75rem; color: var(--on-surface-variant); margin-top: var(--space-xs);">
+              <span>Azul: dentro del umbral</span>
+              <span>Naranja: supera el umbral (exige RIT)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7-Step Visual Pipeline for Due Process (Ley 2466 de 2025) -->
+      <div class="tile reveal" style="margin-top: var(--space-lg);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: var(--space-sm);">
+          <div>
+            <h3 class="tile-title" style="margin:0;">Debido proceso disciplinario en 7 pasos</h3>
+            <p class="tile-subtitle" style="margin: 4px 0 0;">Garantía mínima reforzada por la Ley 2466 de 2025 para que una sanción sea válida.</p>
+          </div>
+          <span class="chip">Revisión según tamaño de empresa</span>
+        </div>
+
+        <div class="pipeline">
+          <div class="pipe-step">
+            <span class="pipe-num">1</span>
+            <span class="pipe-label">Comunicación formal de apertura</span>
+          </div>
+          <div class="pipe-step">
+            <span class="pipe-num">2</span>
+            <span class="pipe-label">Descripción de hechos y conductas</span>
+          </div>
+          <div class="pipe-step">
+            <span class="pipe-num">3</span>
+            <span class="pipe-label">Traslado de las pruebas</span>
+          </div>
+          <div class="pipe-step">
+            <span class="pipe-num">4</span>
+            <span class="pipe-label">Oportunidad de descargos</span>
+          </div>
+          <div class="pipe-step">
+            <span class="pipe-num">5</span>
+            <span class="pipe-label">Derecho a controvertir pruebas</span>
+          </div>
+          <div class="pipe-step">
+            <span class="pipe-num">6</span>
+            <span class="pipe-label">Decisión motivada</span>
+          </div>
+          <div class="pipe-step">
+            <span class="pipe-num">7</span>
+            <span class="pipe-label">Posibilidad de impugnar</span>
+          </div>
+        </div>
+
+        <!-- Proportional Scale Pills -->
+        <div class="grid-4" style="margin-top: var(--space-lg); gap: var(--space-sm);">
+          <div class="mini-panel">
+            <strong>Llegadas tarde</strong>
+            <span>Llamado de atención o sanción proporcional.</span>
+          </div>
+          <div class="mini-panel">
+            <strong>Falla en procesos</strong>
+            <span>Investigación y eventual sanción.</span>
+          </div>
+          <div class="mini-panel">
+            <strong>Ausencia injustificada</strong>
+            <span>Apertura de investigación disciplinaria.</span>
+          </div>
+          <div class="mini-panel">
+            <strong>Falta grave</strong>
+            <span>Sanción proporcional o terminación.</span>
+          </div>
+        </div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Sanciones disciplinarias inválidas</strong><p>Prevención: mantener el RIT actualizado y respetar el debido proceso antes de sancionar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJE 5: TERMINACIÓN DE CONTRATOS, PERIODO DE PRUEBA Y LIQUIDACIONES -->
+  <section id="eje-5" class="band alt">
+    <div class="band-inner">
+      <div class="headline-stack reveal">
+        <span class="eyebrow">Eje 5 · Terminación, periodo de prueba y liquidación</span>
+        <h2>Cómo cerrar una relación laboral sin contingencias</h2>
+        <p class="lede">Antes de terminar un contrato, verifica protecciones especiales, documenta la causal o calcula la indemnización exacta.</p>
+      </div>
+
+      <!-- Shield Banner: Estabilidad Laboral Reforzada -->
+      <div class="tile reveal" style="margin-bottom: var(--space-lg);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: var(--space-sm); margin-bottom: var(--space-md);">
+          <div>
+            <span class="chip danger">Filtro previo obligatorio</span>
+            <h3 class="tile-title" style="margin: var(--space-xs) 0 0;">Estabilidad laboral reforzada</h3>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--on-surface-variant); margin:0; max-width: 46ch;">
+            Incluso con justa causa o en periodo de prueba, revisa si aplica fuero o autorización previa para evitar reintegros.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="mini-panel" style="display:flex; align-items:center; gap: var(--space-sm);">
+            <i data-lucide="baby" aria-hidden="true" style="color: var(--primary); flex-shrink:0;"></i>
+            <div><strong>Maternidad</strong><span>Embarazo o licencia protegida</span></div>
+          </div>
+          <div class="mini-panel" style="display:flex; align-items:center; gap: var(--space-sm);">
+            <i data-lucide="heart-pulse" aria-hidden="true" style="color: var(--secondary); flex-shrink:0;"></i>
+            <div><strong>Salud</strong><span>Afectaciones con fuero médico</span></div>
+          </div>
+          <div class="mini-panel" style="display:flex; align-items:center; gap: var(--space-sm);">
+            <i data-lucide="users" aria-hidden="true" style="color: var(--primary); flex-shrink:0;"></i>
+            <div><strong>Fuero sindical</strong><span>Protección gremial vigente</span></div>
+          </div>
+          <div class="mini-panel" style="display:flex; align-items:center; gap: var(--space-sm);">
+            <i data-lucide="shield-alert" aria-hidden="true" style="color: var(--secondary); flex-shrink:0;"></i>
+            <div><strong>Otras garantías</strong><span>Protecciones legales especiales</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Interactive Calculators: Periodo de Prueba + Indemnización -->
+      <div class="grid-2 reveal">
+        <!-- Left: Periodo de Prueba -->
+        <div class="tile">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-sm);">
+            <h3 class="tile-title" style="margin:0;">Tope del periodo de prueba</h3>
+            <span class="chip">Arts. 76–80 CST</span>
+          </div>
+          <p class="tile-subtitle">Siempre por escrito. En contratos fijos menores a 1 año, máximo 1/5 parte del plazo (tope 2 meses).</p>
+
+          <div class="segmented" style="margin-bottom: var(--space-md);" role="group" aria-label="Modalidad para periodo de prueba">
+            <button type="button" class="seg-btn" id="trial-btn-short" aria-pressed="true" onclick="setTrialMode('short')">Fijo &lt; 1 año</button>
+            <button type="button" class="seg-btn" id="trial-btn-long" aria-pressed="false" onclick="setTrialMode('long')">Indefinido o ≥ 1 año</button>
+          </div>
+
+          <div id="trial-slider-box" class="field" style="margin-bottom: var(--space-md);">
+            <label for="trial-months">Duración del contrato fijo: <strong id="trial-months-label">6 meses</strong></label>
+            <input type="range" id="trial-months" min="1" max="11" step="1" value="6" oninput="updateTrialCalc()">
+          </div>
+
+          <div class="mini-panel" style="padding: var(--space-md);">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-size: var(--label-size); color: var(--on-surface-variant);">Máximo legal permitido</span>
+              <strong id="trial-result" style="font-family: var(--font-headline); font-size: 1.75rem; color: var(--primary); font-variant-numeric: tabular-nums;">1,2 meses (~36 días)</strong>
+            </div>
+
+            <div class="timeline-bar">
+              <div id="trial-bar-fill" class="timeline-fill" style="width: 20%;">1/5 parte</div>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--on-surface-variant);">
+              Sin preaviso ni indemnización, pero respetando derechos fundamentales y sin discriminación.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Indemnización Despido sin Justa Causa -->
+        <div class="tile">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-sm);">
+            <h3 class="tile-title" style="margin:0;">Indemnización sin justa causa</h3>
+            <span class="chip warn">Art. 64 CST</span>
+          </div>
+          <p class="tile-subtitle">Para término indefinido. En fijo u obra/labor se paga el tiempo faltante (mínimo 15 días).</p>
+
+          <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-md);">
+            <div class="field">
+              <label for="indem-salary">Salario mensual ($)</label>
+              <input type="number" id="indem-salary" class="input-pill" min="1000000" max="50000000" step="1" value="1750905" oninput="updateIndemCalc()">
+            </div>
+            <div class="field">
+              <label for="indem-years">Años de antigüedad</label>
+              <input type="number" id="indem-years" class="input-pill" min="0.5" max="30" step="0.5" value="2" oninput="updateIndemCalc()">
+            </div>
+          </div>
+
+          <div class="segmented" style="margin-bottom: var(--space-md);" role="group" aria-label="Nivel salarial en SMMLV">
+            <button type="button" class="seg-btn" id="indem-btn-low" aria-pressed="true" onclick="setIndemTier('low')">Menor a 10 SMMLV (30 + 20 d)</button>
+            <button type="button" class="seg-btn" id="indem-btn-high" aria-pressed="false" onclick="setIndemTier('high')">10 SMMLV o más (20 + 15 d)</button>
+          </div>
+
+          <div class="mini-panel" style="padding: var(--space-md); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: var(--space-sm);">
+            <div>
+              <div style="font-size: var(--label-size); color: var(--on-surface-variant);" id="indem-days-label">30 d año 1 + 20 d adicionales = 50 días</div>
+              <div id="indem-total" style="font-family: var(--font-headline); font-size: 2rem; font-weight: 700; color: var(--secondary); font-variant-numeric: tabular-nums;">$2.918.175</div>
+            </div>
+            <span class="chip">Adicional a la liquidación</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Justa Causa Flow + Liquidación Final Strip -->
+      <div class="grid-2 reveal" style="margin-top: var(--space-lg);">
+        <div class="tile">
+          <h3 class="tile-title">Terminación con justa causa (Art. 62 CST)</h3>
+          <p class="tile-subtitle">Evita causales genéricas como "bajo rendimiento" sin soportes.</p>
+          <div style="display:flex; flex-wrap:wrap; gap: 6px; margin-bottom: var(--space-md);">
+            <span class="chip">1. Identificar causal legal</span>
+            <span class="chip">2. Reunir pruebas</span>
+            <span class="chip">3. Derecho de defensa</span>
+            <span class="chip">4. Carta escrita motivada</span>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--on-surface-variant); margin:0;">
+            Ejemplos válidos: incumplimiento grave, violencia o malos tratos, embriaguez o sustancias prohibidas, revelar información confidencial o abandono injustificado.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3 class="tile-title">Checklist de liquidación final</h3>
+          <p class="tile-subtitle">Aplica al terminar cualquier contrato (incluso por renuncia voluntaria):</p>
+          <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; font-size: 0.875rem; font-weight: 500;">
+            <div style="display:flex; align-items:center; gap: 6px;"><i data-lucide="check-circle-2" aria-hidden="true" style="width:16px; height:16px; color: var(--positive);"></i> Salarios pendientes</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><i data-lucide="check-circle-2" aria-hidden="true" style="width:16px; height:16px; color: var(--positive);"></i> Prima proporcional</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><i data-lucide="check-circle-2" aria-hidden="true" style="width:16px; height:16px; color: var(--positive);"></i> Cesantías proporcionales</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><i data-lucide="check-circle-2" aria-hidden="true" style="width:16px; height:16px; color: var(--positive);"></i> Intereses a cesantías</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><i data-lucide="check-circle-2" aria-hidden="true" style="width:16px; height:16px; color: var(--positive);"></i> Vacaciones pendientes</div>
+            <div style="display:flex; align-items:center; gap: 6px;"><i data-lucide="check-circle-2" aria-hidden="true" style="width:16px; height:16px; color: var(--positive);"></i> Extras y recargos</div>
+          </div>
+        </div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Demandas por despido injustificado</strong><p>Prevención: documentar los hechos y sustentar una causal precisa al terminar el contrato.</p></div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Terminación irregular durante el periodo de prueba</strong><p>Prevención: pactarlo por escrito, respetar los límites legales y evitar decisiones discriminatorias.</p></div>
+      </div>
+      <div class="risk-callout">
+        <span class="chip danger">Riesgo</span>
+        <div><strong>Reintegros e indemnizaciones por estabilidad reforzada</strong><p>Prevención: revisar fueros y protecciones especiales antes de terminar el vínculo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCIAS NORMATIVAS -->
+  <section class="band">
+    <div class="band-inner">
+      <div class="headline-stack reveal">
+        <span class="eyebrow">Consulta jurídica</span>
+        <h2>Normatividad de referencia</h2>
+        <p class="lede">Normas principales para ampliar la información de los cinco ejes.</p>
+      </div>
+
+      <!-- Collapsible Reference Laws -->
+      <details class="norm-drawer reveal">
+        <summary>
+          <span>Normatividad clave de consulta (CST, Ley 100, Ley 2101 y Ley 2466)</span>
+          <i data-lucide="chevron-down" aria-hidden="true" style="width:20px; height:20px;"></i>
+        </summary>
+        <div style="margin-top: var(--space-md);">
+          <table class="clean-table">
+            <tbody>
+              <tr><td><strong>CST, arts. 22 y 23</strong></td><td>Contrato de trabajo y sus tres elementos</td></tr>
+              <tr><td><strong>CST, arts. 46 y 47</strong></td><td>Contratos a término fijo, obra o labor e indefinido</td></tr>
+              <tr><td><strong>CST, arts. 62 y 64</strong></td><td>Justas causas e indemnización por despido</td></tr>
+              <tr><td><strong>CST, arts. 76 al 80</strong></td><td>Regulación del periodo de prueba</td></tr>
+              <tr><td><strong>CST, arts. 104 al 120</strong></td><td>Reglamento Interno de Trabajo y régimen disciplinario</td></tr>
+              <tr><td><strong>CST, arts. 127, 160, 161, 168, 179, 186, 249</strong></td><td>Salario, jornada diurna/nocturna, recargos, vacaciones y cesantías</td></tr>
+              <tr><td><strong>Ley 100 de 1993</strong></td><td>Sistema general de seguridad social</td></tr>
+              <tr><td><strong>Ley 2101 de 2021</strong></td><td>Reducción gradual de la jornada laboral a 42 horas</td></tr>
+              <tr><td><strong>Ley 2466 de 2025</strong></td><td>Reforma laboral (recargos nocturno/dominical y debido proceso)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <footer class="band alt" id="contacto">
+    <div class="band-inner">
+      <p class="footer-note">
+        Guía de carácter académico y general; cada decisión de contratación, sanción o despido requiere revisar los hechos y protecciones aplicables.
+      </p>
+      <p class="footer-note">¿Encontraste una novedad o imprecisión en el material? Comunícala a <a href="mailto:andimoggo@gmail.com">andimoggo@gmail.com</a> o por WhatsApp al <a href="https://wa.me/573209221591" target="_blank" rel="noopener noreferrer">+57 320 922 1591</a>.</p>
+    </div>
+  </footer>
+
+  <api-shim></api-shim>
+
+  <script>
+    // State object persisted via notebookAppApi
+    const appState = {
+      realityFlags: [false, false, false, false, false, false],
+      salary: 1750905,
+      exoneracion: false,
+      hourMonthlySalary: 1750905,
+      hourRate: `0.90`,
+      ritSector: `5`,
+      ritWorkers: 6,
+      trialMode: `short`,
+      trialMonths: 6,
+      indemSalary: 1750905,
+      indemYears: 2,
+      indemTier: `low`
+    };
+
+    let salaryChartInstance = null;
+    let jornadaChartInstance = null;
+    let dominicalChartInstance = null;
+
+    function cssToken(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function formatCOP(value) {
+      const rounded = Math.round(value);
+      return `$` + rounded.toLocaleString(`es-CO`);
+    }
+
+    function saveState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        window.notebookAppApi.setAppState(appState).catch(function() {});
+      }
+    }
+
+    // Eje 1: Contrato Realidad Simulator
+    function toggleRealityFlag(index) {
+      appState.realityFlags[index] = !appState.realityFlags[index];
+      renderRealityGauge();
+      saveState();
+    }
+
+    function renderRealityGauge() {
+      const buttons = document.querySelectorAll(`#reality-toggles .toggle-item`);
+      let count = 0;
+      buttons.forEach(function(btn, idx) {
+        const active = Boolean(appState.realityFlags[idx]);
+        btn.setAttribute(`aria-pressed`, active ? `true` : `false`);
+        if (active) count++;
+      });
+
+      const needle = document.getElementById(`gauge-needle`);
+      const verdict = document.getElementById(`reality-verdict`);
+      const detail = document.getElementById(`reality-detail`);
+      const badge = document.getElementById(`reality-badge`);
+
+      const angle = -75 + (count / 6) * 150;
+      if (needle) {
+        needle.style.transform = `rotate(` + angle + `deg)`;
+      }
+      if (verdict) {
+        verdict.textContent = count + ` de 6 indicios de subordinación`;
+      }
+      if (detail && badge) {
+        if (count <= 1) {
+          badge.className = `chip ok`;
+          badge.textContent = `Pocos indicios`;
+          detail.textContent = `Analiza los hechos en conjunto: prestación personal, remuneración y subordinación continuada.`;
+        } else if (count <= 3) {
+          badge.className = `chip warn`;
+          badge.textContent = `Revisión necesaria`;
+          detail.textContent = `Hay indicios que conviene revisar. Por sí solos no determinan una relación laboral.`;
+        } else {
+          badge.className = `chip danger`;
+          badge.textContent = `Varios indicios de subordinación`;
+          detail.textContent = `Evalúa si concurren los tres elementos legales: prestación personal, remuneración y subordinación continuada.`;
+        }
+      }
+    }
+
+    // Eje 2: Salary & Benefits Simulator
+    function syncSalaryFromSlider(val) {
+      const num = Number(val) || 1750905;
+      appState.salary = num;
+      const input = document.getElementById(`salary-number`);
+      if (input) input.value = num;
+      updateSalarySimulator();
+      saveState();
+    }
+
+function syncSalaryFromNumber(val) {
+  let num = Number(val) || 1750905;
+  if (num < 1750905) num = 1750905;
+  if (num > 15000000) num = 15000000;
+
+  appState.salary = num;
+
+  const slider = document.getElementById("salary-slider");
+  if (slider) slider.value = num;
+
+  updateSalarySimulator();
+  saveState();
+}
+
+    function toggleExoneracion() {
+      appState.exoneracion = !appState.exoneracion;
+      const btn = document.getElementById(`exon-toggle`);
+      if (btn) btn.setAttribute(`aria-pressed`, appState.exoneracion ? `true` : `false`);
+      updateSalarySimulator();
+      saveState();
+    }
+
+    function updateSalarySimulator() {
+      const s = appState.salary;
+      const pensionEmp = s * 0.12;
+      const saludEmp = appState.exoneracion ? 0 : s * 0.085;
+      const cajaEmp = s * 0.04;
+      const senaEmp = appState.exoneracion ? 0 : s * 0.02;
+      const icbfEmp = appState.exoneracion ? 0 : s * 0.03;
+      const saludTrabajador = s * 0.04;
+      const pensionTrabajador = s * 0.04;
+      const totalDescuentoTrabajador = saludTrabajador + pensionTrabajador;
+
+      const primaMes = s / 12;
+      const cesantiasMes = s / 12;
+      const interesesMes = (s * 0.12) / 12;
+      const vacacionesMes = s / 24;
+
+      const totalSegSocial = pensionEmp + saludEmp;
+      const totalParafiscales = cajaEmp + senaEmp + icbfEmp;
+      const totalPrestaciones = primaMes + cesantiasMes + interesesMes + vacacionesMes;
+      const totalCosto = s + totalSegSocial + totalParafiscales + totalPrestaciones;
+      const pctExtra = ((totalCosto - s) / s) * 100;
+
+      const totalEl = document.getElementById(`total-employer-cost`);
+      if (totalEl) totalEl.textContent = formatCOP(totalCosto);
+
+      const multChip = document.getElementById(`cost-multiplier-chip`);
+      if (multChip) multChip.textContent = `Costo adicional del empleador: +` + pctExtra.toFixed(2).replace(`.`, `,`) + ` %`;
+
+      const contributionValues = {
+        "employee-health-value": saludTrabajador,
+        "employee-pension-value": pensionTrabajador,
+        "employee-contributions-total": totalDescuentoTrabajador,
+        "employee-net-salary": s - totalDescuentoTrabajador,
+        "employer-health-value": saludEmp,
+        "employer-pension-value": pensionEmp,
+        "employer-caja-value": cajaEmp,
+        "employer-sena-value": senaEmp,
+        "employer-icbf-value": icbfEmp,
+        "employer-contributions-total": totalSegSocial + totalParafiscales
+      };
+      Object.keys(contributionValues).forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = formatCOP(contributionValues[id]);
+      });
+
+      const elPrima = document.getElementById(`val-prima`);
+      const elCes = document.getElementById(`val-cesantias`);
+      const elInt = document.getElementById(`val-intereses`);
+      const elVac = document.getElementById(`val-vacaciones`);
+      if (elPrima) elPrima.textContent = formatCOP(s);
+      if (elCes) elCes.textContent = formatCOP(s);
+      if (elInt) elInt.textContent = formatCOP(s * 0.12);
+      if (elVac) elVac.textContent = formatCOP(s * 0.5);
+
+      const chipSalud = document.getElementById(`chip-salud`);
+      const chipSena = document.getElementById(`chip-sena-icbf`);
+      if (chipSalud) chipSalud.textContent = appState.exoneracion ? `Salud 0 % (exonerado)` : `Salud 8,5 %`;
+      if (chipSena) chipSena.textContent = appState.exoneracion ? `SENA/ICBF 0 % (exonerado)` : `SENA 2 % · ICBF 3 %`;
+
+      if (salaryChartInstance) {
+        salaryChartInstance.data.datasets[0].data = [
+          Math.round(s),
+          Math.round(totalSegSocial),
+          Math.round(totalParafiscales),
+          Math.round(totalPrestaciones)
+        ];
+        salaryChartInstance.update();
+      }
+    }
+
+    // Eje 3: Hour Surcharge Calculator
+    function updateHourCalc() {
+      const salaryInput = document.getElementById(`monthly-salary-input`);
+      const select = document.getElementById(`hour-type-select`);
+      if (!salaryInput || !select) return;
+
+      const monthlySalary = Math.max(0, Number(salaryInput.value) || 0);
+      const dailySalary = monthlySalary / 30;
+      const base = monthlySalary / 210;
+      const rate = Number(select.value) || 0;
+      appState.hourMonthlySalary = monthlySalary;
+      appState.hourRate = select.value;
+
+      const dailyEl = document.getElementById(`daily-salary-value`);
+      const baseEl = document.getElementById(`hour-base-value`);
+      if (dailyEl) dailyEl.textContent = formatCOP(dailySalary);
+      if (baseEl) baseEl.textContent = formatCOP(base);
+
+      const surcharge = base * rate;
+      const total = base + surcharge;
+
+      const labelEl = document.getElementById(`hour-result-label`);
+      const totalEl = document.getElementById(`hour-total-value`);
+      const surEl = document.getElementById(`hour-surcharge-value`);
+      const barBase = document.getElementById(`hour-bar-base`);
+      const barExtra = document.getElementById(`hour-bar-extra`);
+
+      const selectedText = select.options[select.selectedIndex] ? select.options[select.selectedIndex].text : ``;
+      if (labelEl) labelEl.textContent = `Total: ` + selectedText;
+      if (totalEl) totalEl.textContent = formatCOP(total);
+      if (surEl) surEl.textContent = `+` + formatCOP(surcharge);
+
+      if (barBase && barExtra && total > 0) {
+        const basePct = (base / total) * 100;
+        barBase.style.width = basePct.toFixed(1) + `%`;
+        barExtra.style.width = (100 - basePct).toFixed(1) + `%`;
+      }
+      saveState();
+    }
+
+    // Eje 4: RIT Checker & Matrix
+    function updateRitChecker() {
+      const sectorEl = document.getElementById(`rit-sector`);
+      const sliderEl = document.getElementById(`rit-workers-slider`);
+      if (!sectorEl || !sliderEl) return;
+
+      const threshold = Number(sectorEl.value) || 5;
+      const workers = Number(sliderEl.value) || 1;
+      appState.ritSector = sectorEl.value;
+      appState.ritWorkers = workers;
+
+      const countEl = document.getElementById(`rit-workers-count`);
+      const chipEl = document.getElementById(`rit-status-chip`);
+      const expEl = document.getElementById(`rit-explanation`);
+      const matrix = document.getElementById(`worker-matrix`);
+
+      if (countEl) countEl.textContent = workers;
+
+      const isMandatory = workers > threshold;
+      if (chipEl) {
+        chipEl.className = isMandatory ? `chip warn` : `chip ok`;
+        chipEl.textContent = isMandatory ? `RIT obligatorio` : `Aún no obligatorio`;
+      }
+      if (expEl) {
+        if (isMandatory) {
+          expEl.textContent = `Con ` + workers + ` trabajadores permanentes superas el umbral de ` + threshold + `. Es obligatorio contar con Reglamento Interno de Trabajo.`;
+        } else {
+          expEl.textContent = `Con ` + workers + ` trabajadores no superas el límite de ` + threshold + `. Aun así, es útil para prevenir conflictos.`;
+        }
+      }
+
+      if (matrix) {
+        matrix.innerHTML = ``;
+        for (let i = 1; i <= 30; i++) {
+          const dot = document.createElement(`div`);
+          dot.className = `worker-dot`;
+          if (i <= workers) {
+            dot.classList.add(i > threshold ? `over-limit` : `active`);
+          }
+          dot.setAttribute(`aria-hidden`, `true`);
+          dot.textContent = i <= workers ? i : ``;
+          dot.style.fontSize = `0.6875rem`;
+          dot.style.fontWeight = `600`;
+          matrix.appendChild(dot);
+        }
+      }
+      saveState();
+    }
+
+    // Eje 5: Periodo de prueba
+    function setTrialMode(mode) {
+      appState.trialMode = mode;
+      const btnShort = document.getElementById(`trial-btn-short`);
+      const btnLong = document.getElementById(`trial-btn-long`);
+      const sliderBox = document.getElementById(`trial-slider-box`);
+
+      if (btnShort) btnShort.setAttribute(`aria-pressed`, mode === `short` ? `true` : `false`);
+      if (btnLong) btnLong.setAttribute(`aria-pressed`, mode === `long` ? `true` : `false`);
+      if (sliderBox) sliderBox.style.display = mode === `short` ? `flex` : `none`;
+
+      updateTrialCalc();
+      saveState();
+    }
+
+    function updateTrialCalc() {
+      const slider = document.getElementById(`trial-months`);
+      const monthsLabel = document.getElementById(`trial-months-label`);
+      const resultEl = document.getElementById(`trial-result`);
+      const barFill = document.getElementById(`trial-bar-fill`);
+      if (!slider || !resultEl || !barFill) return;
+
+      const months = Number(slider.value) || 6;
+      appState.trialMonths = months;
+      if (monthsLabel) monthsLabel.textContent = months + (months === 1 ? ` mes` : ` meses`);
+
+      if (appState.trialMode === `long`) {
+        resultEl.textContent = `Máximo 2 meses (60 días)`;
+        barFill.style.width = `35%`;
+        barFill.textContent = `Tope legal: 2 meses`;
+      } else {
+        const fifthMonths = Math.min(2, months / 5);
+        const approxDays = Math.round(fifthMonths * 30);
+        const fmtMonths = fifthMonths.toFixed(1).replace(`.`, `,`);
+        resultEl.textContent = fmtMonths + ` meses (~` + approxDays + ` días)`;
+        barFill.style.width = `20%`;
+        barFill.textContent = `1/5 parte (` + approxDays + ` d)`;
+      }
+      saveState();
+    }
+
+    // Eje 5: Indemnización
+    function setIndemTier(tier) {
+      appState.indemTier = tier;
+      const btnLow = document.getElementById(`indem-btn-low`);
+      const btnHigh = document.getElementById(`indem-btn-high`);
+      if (btnLow) btnLow.setAttribute(`aria-pressed`, tier === `low` ? `true` : `false`);
+      if (btnHigh) btnHigh.setAttribute(`aria-pressed`, tier === `high` ? `true` : `false`);
+      updateIndemCalc();
+      saveState();
+    }
+
+    function updateIndemCalc() {
+      const salEl = document.getElementById(`indem-salary`);
+      const yrsEl = document.getElementById(`indem-years`);
+      const daysLabel = document.getElementById(`indem-days-label`);
+      const totalEl = document.getElementById(`indem-total`);
+      if (!salEl || !yrsEl || !daysLabel || !totalEl) return;
+
+      const sal = Math.max(0, Number(salEl.value) || 0);
+      const yrs = Math.max(0.1, Number(yrsEl.value) || 1);
+      appState.indemSalary = sal;
+      appState.indemYears = yrs;
+
+      const firstYearDays = appState.indemTier === `low` ? 30 : 20;
+      const extraYearDays = appState.indemTier === `low` ? 20 : 15;
+
+      let totalDays = 0;
+      if (yrs <= 1) {
+        totalDays = firstYearDays;
+        daysLabel.textContent = `Primer año o fracción: ` + firstYearDays + ` días`;
+      } else {
+        const addYears = yrs - 1;
+        const addDays = addYears * extraYearDays;
+        totalDays = firstYearDays + addDays;
+        daysLabel.textContent = firstYearDays + ` d año 1 + ` + Math.round(addDays * 10) / 10 + ` d adicionales = ` + (Math.round(totalDays * 10) / 10) + ` días`;
+      }
+
+      const indemAmount = (sal * totalDays) / 30;
+      totalEl.textContent = formatCOP(indemAmount);
+      saveState();
+    }
+
+    // Initialize Charts
+    function initCharts() {
+      if (typeof Chart === `undefined`) return;
+
+      const cPrimary = cssToken(`--data-1`);
+      const cOrange = cssToken(`--data-2`);
+      const cGreen = cssToken(`--data-3`);
+      const cPurple = cssToken(`--data-4`);
+      const cContext = cssToken(`--data-context`);
+      const cGrid = cssToken(`--outline-variant`);
+      const cInk = cssToken(`--on-surface`);
+      const cMuted = cssToken(`--on-surface-variant`);
+
+      Chart.defaults.font.family = `'Inter', sans-serif`;
+      Chart.defaults.color = cMuted;
+
+      // 1. Salary Breakdown Chart
+      const salCanvas = document.getElementById(`salaryChart`);
+      if (salCanvas) {
+        salaryChartInstance = new Chart(salCanvas, {
+          type: `bar`,
+          data: {
+            labels: [
+              `Salario base`,
+              `Seguridad social`,
+              `Parafiscales`,
+              `Prestaciones (mes)`
+            ],
+            datasets: [{
+              label: `Valor mensual (COP)`,
+              data: [1750905, 358936, 157581, 382281],
+              backgroundColor: [cPrimary, cOrange, cPurple, cGreen],
+              borderRadius: 6,
+              barPercentage: 0.65
+            }]
+          },
+          options: {
+            indexAxis: `y`,
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) {
+                    return ` ` + formatCOP(ctx.parsed.x);
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: cGrid },
+                border: { display: false },
+                ticks: {
+                  callback: function(val) {
+                    return `$` + (val / 1000000).toFixed(1) + `M`;
+                  }
+                }
+              },
+              y: {
+                grid: { display: false },
+                border: { display: false },
+                ticks: { color: cInk, font: { weight: `500` } }
+              }
+            }
+          }
+        });
+      }
+
+      // 2. Jornada Chart (48 -> 42)
+      const jorCanvas = document.getElementById(`jornadaChart`);
+      if (jorCanvas) {
+        jornadaChartInstance = new Chart(jorCanvas, {
+          type: `bar`,
+          data: {
+            labels: [`Antes jul 2023`, `Jul 2023`, `Jul 2024`, `Jul 2025`, `Nov 2026 (Hoy)`],
+            datasets: [{
+              label: `Horas semanales`,
+              data: [48, 47, 46, 44, 42],
+              backgroundColor: [cContext, cContext, cContext, cContext, cPrimary],
+              borderRadius: 6,
+              barPercentage: 0.6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) {
+                    return ` ` + ctx.parsed.y + ` horas/semana`;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                min: 38,
+                max: 50,
+                grid: { color: cGrid },
+                border: { display: false },
+                ticks: {
+                  callback: function(v) { return v + ` h`; }
+                }
+              },
+              x: {
+                grid: { display: false },
+                border: { display: false },
+                ticks: { color: cInk }
+              }
+            }
+          }
+        });
+      }
+
+      // 3. Dominical Chart (80% -> 90% -> 100%)
+      const domCanvas = document.getElementById(`dominicalChart`);
+      if (domCanvas) {
+        dominicalChartInstance = new Chart(domCanvas, {
+          type: `bar`,
+          data: {
+            labels: [`1 jul 2025`, `Nov 2026 (Hoy)`, `1 jul 2027`],
+            datasets: [{
+              label: `Recargo dominical`,
+              data: [80, 90, 100],
+              backgroundColor: [cContext, cOrange, cPrimary],
+              borderRadius: 6,
+              barPercentage: 0.5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) {
+                    return ` +` + ctx.parsed.y + ` % adicional`;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                min: 50,
+                max: 110,
+                grid: { color: cGrid },
+                border: { display: false },
+                ticks: {
+                  callback: function(v) { return v + ` %`; }
+                }
+              },
+              x: {
+                grid: { display: false },
+                border: { display: false },
+                ticks: { color: cInk }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    function applyStateToDOM() {
+      renderRealityGauge();
+
+      const salSlider = document.getElementById(`salary-slider`);
+      const salNumber = document.getElementById(`salary-number`);
+      const exonBtn = document.getElementById(`exon-toggle`);
+      if (salSlider) salSlider.value = appState.salary;
+      if (salNumber) salNumber.value = appState.salary;
+      if (exonBtn) exonBtn.setAttribute(`aria-pressed`, appState.exoneracion ? `true` : `false`);
+      updateSalarySimulator();
+
+      const hourSalary = document.getElementById(`monthly-salary-input`);
+      const hourSelect = document.getElementById(`hour-type-select`);
+      if (hourSalary) hourSalary.value = appState.hourMonthlySalary ?? 1750905;
+      if (hourSelect) hourSelect.value = appState.hourRate;
+      updateHourCalc();
+
+      const ritSector = document.getElementById(`rit-sector`);
+      const ritSlider = document.getElementById(`rit-workers-slider`);
+      if (ritSector) ritSector.value = appState.ritSector;
+      if (ritSlider) ritSlider.value = appState.ritWorkers;
+      updateRitChecker();
+
+      const trialMonths = document.getElementById(`trial-months`);
+      if (trialMonths) trialMonths.value = appState.trialMonths;
+      setTrialMode(appState.trialMode);
+
+      const indemSal = document.getElementById(`indem-salary`);
+      const indemYrs = document.getElementById(`indem-years`);
+      if (indemSal) indemSal.value = appState.indemSalary;
+      if (indemYrs) indemYrs.value = appState.indemYears;
+      setIndemTier(appState.indemTier);
+    }
+
+    function initRevealObserver() {
+      const items = document.querySelectorAll(`.reveal`);
+      if (!(`IntersectionObserver` in window)) {
+        items.forEach(function(el) { el.classList.add(`is-visible`); });
+        return;
+      }
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(`is-visible`);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      items.forEach(function(el) { obs.observe(el); });
+    }
+
+    async function bootstrap() {
+      if (typeof lucide !== `undefined` && typeof lucide.createIcons === `function`) {
+        lucide.createIcons();
+      }
+      initCharts();
+      initRevealObserver();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            Object.assign(appState, saved);
+          }
+        } catch (e) {}
+      }
+
+      applyStateToDOM();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, bootstrap);
+  </script>
+</body>
+</html>
