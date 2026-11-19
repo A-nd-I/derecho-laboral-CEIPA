@@ -1,0 +1,2576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="briefing">
+  <title>Mapa Mental Laboral · Veralaya Beach SAS (Colombia 2026)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces: warm stone-white paper */
+      --background: #faf9f5;
+      --surface-container-low: #ffffff;
+      --surface-container: #f1efe8;
+      --surface-container-high: #e6e2d6;
+
+      /* Ink */
+      --on-surface: #17181a;
+      --on-surface-variant: #56585c;
+
+      /* Rules */
+      --outline: #17181a;
+      --outline-variant: #dedad0;
+      --outline-button: #c8c4b8;
+
+      /* Accents */
+      --primary: #17181a;
+      --on-primary: #faf9f5;
+      --primary-container: #f2b705;
+      --on-primary-container: #17181a;
+      --secondary: #1f4e5f;
+      --on-secondary: #ffffff;
+      --secondary-soft: #e6eff2;
+      --tertiary: #785008;
+      --tertiary-soft: #f5e6c4;
+      --error: #b42318;
+      --error-soft: #fbeae8;
+      --on-error: #ffffff;
+
+      /* Semantic */
+      --positive: #2b6e52;
+      --positive-soft: #e6f2ec;
+      --warning: #9a5b08;
+      --warning-soft: #fbf0dc;
+      --focus: #1f4e5f;
+
+      /* Data series, in order of use */
+      --data-1: #1f4e5f;
+      --data-2: #d99000;
+      --data-3: #2b6e52;
+      --data-4: #b84a39;
+      --data-context: #c4bfb2;
+
+      /* Fonts */
+      --font-headline: 'Source Serif 4', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-label: 'Geist Mono', monospace;
+
+      /* Shape */
+      --rounded: 0.25rem;
+      --rounded-lg: 0.375rem;
+      --rounded-full: 0.25rem;
+
+      /* Style effects */
+      --section-rule: 1.5px solid var(--outline);
+      --card-border: 1px solid var(--outline-variant);
+      --badge-radius: 2px;
+      --heading-tracking: -0.02em;
+      --label-tracking: 0.08em;
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2.15rem, 1.4rem + 3vw, 3.5rem);
+      --headline-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.35rem);
+      --subhead-size: clamp(1.1875rem, 1.05rem + 0.5vw, 1.425rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.09375rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 5.5rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1220px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 2.5px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Dossier Header & Section Bars */
+    .dossier-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--section-rule);
+      padding-bottom: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .dossier-bar-left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .dossier-pill {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: var(--label-tracking);
+      text-transform: uppercase;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--badge-radius);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .dossier-meta {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 600;
+      letter-spacing: var(--heading-tracking);
+      color: var(--on-surface);
+    }
+    .hero-title {
+      font-size: var(--display-size);
+      line-height: 1.07;
+      max-width: 24ch;
+    }
+    .section-title {
+      font-size: var(--headline-size);
+      line-height: 1.12;
+    }
+    .card-title {
+      font-size: var(--subhead-size);
+      line-height: 1.22;
+    }
+    .standfirst {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+      color: var(--secondary);
+      margin-top: var(--space-sm);
+      max-width: 68ch;
+      line-height: 1.45;
+    }
+    .prose {
+      max-width: 66ch;
+      color: var(--on-surface);
+    }
+    .prose p { margin: 0 0 var(--space-md); }
+    .prose p:last-child { margin-bottom: 0; }
+    .muted { color: var(--on-surface-variant); }
+    .tabular { font-variant-numeric: lining-nums tabular-nums; }
+    .index-num {
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: var(--label-size);
+      color: var(--secondary);
+      letter-spacing: 0.06em;
+    }
+
+    /* Hero Diagnostic Strip */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+      margin-top: var(--space-md);
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+    .figure-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .figure-card--compact {
+      padding: var(--space-md);
+    }
+    .figure-card .kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-xs);
+    }
+    .figure-card .value {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+      line-height: 1.1;
+      font-variant-numeric: lining-nums tabular-nums;
+      color: var(--on-surface);
+    }
+    .figure-card .note {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin-top: var(--space-xs);
+      line-height: 1.4;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      background: var(--tertiary-soft);
+      color: var(--tertiary);
+    }
+    .tag--ok { background: var(--positive-soft); color: var(--positive); }
+    .tag--warn { background: var(--warning-soft); color: var(--warning); }
+    .tag--alert { background: var(--error-soft); color: var(--error); }
+    .tag--slate { background: var(--secondary-soft); color: var(--secondary); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out),
+                  transform var(--dur-micro) var(--ease-out);
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn--primary {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn--primary:hover { background: var(--secondary); }
+    .btn--secondary {
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border-color: var(--outline-button);
+    }
+    .btn--secondary:hover { background: var(--surface-container); }
+    .btn--gold {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border-color: var(--outline);
+    }
+    .btn--gold:hover { background: var(--tertiary-soft); }
+    .btn[aria-pressed="true"] {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      border-color: var(--secondary);
+    }
+
+    /* Mind Map Section */
+    .mindmap-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .mindmap-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .pillar-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .pillar-pill-btn {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border: 1px solid var(--outline-button);
+      border-radius: var(--rounded);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out);
+    }
+    .pillar-pill-btn:hover { background: var(--surface-container); }
+    .pillar-pill-btn.is-active {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      border-color: var(--secondary);
+    }
+    .pillar-pill-btn .pill-num {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      opacity: 0.88;
+    }
+
+    .mindmap-canvas-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+    }
+    .mindmap-svg-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    svg.mindmap-svg {
+      display: block;
+      width: 100%;
+      min-width: 680px;
+      height: auto;
+    }
+
+    /* Mind Map SVG interactive nodes */
+    .mm-link {
+      fill: none;
+      stroke: var(--outline-variant);
+      stroke-width: 2;
+      transition: stroke var(--dur-short) var(--ease-out), stroke-width var(--dur-short) var(--ease-out);
+    }
+    .mm-link.is-active {
+      stroke: var(--secondary);
+      stroke-width: 2.75;
+    }
+    .mm-link--sub {
+      fill: none;
+      stroke: var(--outline-variant);
+      stroke-width: 1.5;
+      stroke-dasharray: 4 3;
+      transition: stroke var(--dur-short) var(--ease-out);
+    }
+    .mm-link--sub.is-active {
+      stroke: var(--data-2);
+      stroke-dasharray: none;
+      stroke-width: 2;
+    }
+    .mm-node {
+      cursor: pointer;
+    }
+    .mm-node rect.mm-box {
+      fill: var(--surface-container-low);
+      stroke: var(--outline-variant);
+      stroke-width: 1.5;
+      transition: fill var(--dur-micro) var(--ease-out),
+                  stroke var(--dur-micro) var(--ease-out),
+                  stroke-width var(--dur-micro) var(--ease-out);
+    }
+    .mm-node:hover rect.mm-box {
+      fill: var(--surface-container);
+      stroke: var(--secondary);
+    }
+    .mm-node.is-selected rect.mm-box {
+      fill: var(--secondary);
+      stroke: var(--on-surface);
+      stroke-width: 2;
+    }
+    .mm-node--root rect.mm-box {
+      fill: var(--primary);
+      stroke: var(--primary);
+    }
+    .mm-node--root.is-selected rect.mm-box {
+      fill: var(--primary);
+      stroke: var(--primary-container);
+      stroke-width: 3;
+    }
+    .mm-node--sub rect.mm-box {
+      fill: var(--background);
+      stroke: var(--outline-variant);
+      stroke-width: 1.25;
+    }
+    .mm-node--sub.is-selected rect.mm-box {
+      fill: var(--primary-container);
+      stroke: var(--on-surface);
+      stroke-width: 2;
+    }
+    .mm-node--sub.is-branch-active rect.mm-box {
+      fill: var(--surface-container-low);
+      stroke: var(--secondary);
+    }
+    .mm-node--sub.is-selected.is-branch-active rect.mm-box {
+      fill: var(--primary-container);
+      stroke: var(--on-surface);
+    }
+    .mm-text-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      fill: var(--on-surface);
+    }
+    .mm-text-sub {
+      font-family: var(--font-label);
+      font-size: 10.5px;
+      fill: var(--on-surface-variant);
+    }
+    .mm-node--root .mm-text-title { fill: var(--on-primary); font-size: 14px; }
+    .mm-node--root .mm-text-sub { fill: var(--primary-container); }
+    .mm-node.is-selected:not(.mm-node--root):not(.mm-node--sub) .mm-text-title { fill: var(--on-secondary); }
+    .mm-node.is-selected:not(.mm-node--root):not(.mm-node--sub) .mm-text-sub { fill: var(--secondary-soft); }
+    .mm-node--sub .mm-text-title { font-size: 11.5px; font-weight: 600; }
+    .mm-node--sub.is-selected .mm-text-title { fill: var(--on-primary-container); font-weight: 700; }
+    .mm-node--sub.is-selected .mm-text-sub { fill: var(--on-primary-container); }
+
+    .mm-badge-rect { fill: var(--primary-container); }
+    .mm-badge-text {
+      font-family: var(--font-label);
+      font-size: 10px;
+      font-weight: 700;
+      fill: var(--on-primary-container);
+    }
+
+    /* Inspector Panel */
+    .inspector-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-top: 3px solid var(--secondary);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .inspector-list {
+      margin: 0;
+      padding-left: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .inspector-list li { line-height: 1.48; }
+    .aside-box {
+      background: var(--surface-container);
+      border-top: var(--section-rule);
+      padding: var(--space-md);
+      border-radius: 0 0 var(--rounded) var(--rounded);
+    }
+    .inspector-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--outline-variant);
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+    }
+    table.briefing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+    }
+    table.briefing-table th {
+      text-align: left;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface);
+      background: var(--surface-container);
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--section-rule);
+    }
+    table.briefing-table td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: 1px solid var(--outline-variant);
+      vertical-align: top;
+    }
+    table.briefing-table tr:last-child td { border-bottom: none; }
+    table.briefing-table .num {
+      text-align: right;
+      font-family: var(--font-label);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    table.briefing-table tr.highlight-row td {
+      background: var(--tertiary-soft);
+      font-weight: 600;
+    }
+
+    /* Section Layouts */
+    .module-section {
+      padding-top: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .two-col-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    /* Interactive Form Controls */
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+      gap: var(--space-md);
+      align-items: end;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface);
+    }
+    .field-input, .field-select {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--outline-button);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      width: 100%;
+    }
+    .field-select { padding-right: var(--space-xl); }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      background: var(--background);
+      cursor: pointer;
+    }
+    .toggle-row input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--secondary);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    /* Output KPI Mini-Grid inside Calculators */
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    .calc-stat {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      border-left: 3px solid var(--secondary);
+    }
+    .calc-stat--gold { border-left-color: var(--data-2); }
+    .calc-stat--green { border-left-color: var(--positive); }
+    .calc-stat--red { border-left-color: var(--error); }
+    .calc-stat-label {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface-variant);
+    }
+    .calc-stat-val {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: 1.35rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--on-surface);
+      margin-top: var(--space-xs);
+    }
+
+    /* Bar Chart (Jornada 48h -> 42h & Dominical 80% -> 100%) */
+    .bar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr) 68px;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.875rem;
+    }
+    .bar-label {
+      font-family: var(--font-label);
+      font-size: 0.78rem;
+      color: var(--on-surface-variant);
+    }
+    .bar-track {
+      height: 18px;
+      background: var(--surface-container);
+      border-radius: var(--badge-radius);
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--data-context);
+      border-radius: var(--badge-radius);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+    .bar-fill--current { background: var(--data-1); }
+    .bar-fill--gold { background: var(--data-2); }
+    .bar-val {
+      text-align: right;
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Due Process Stepper (Ley 2466 de 2025) */
+    .stepper-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+      gap: var(--space-xs);
+    }
+    .step-btn {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      text-align: left;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out);
+    }
+    .step-btn:hover { background: var(--surface-container-high); }
+    .step-btn.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .step-num-pill {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      padding: 2px 5px;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border-radius: var(--badge-radius);
+      flex-shrink: 0;
+    }
+
+    /* Action Checklist */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: var(--space-sm);
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      cursor: pointer;
+      min-height: 44px;
+      transition: background-color var(--dur-micro) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+    .check-item:hover { background: var(--surface-container); }
+    .check-item.is-done {
+      border-color: var(--positive);
+      background: var(--positive-soft);
+    }
+    .check-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--positive);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .progress-bar-wrap {
+      height: 12px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded);
+      overflow: hidden;
+      margin-top: var(--space-xs);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--positive);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    /* Container queries */
+    .card-wrapper { container-type: inline-size; }
+    @container (max-width: 420px) {
+      .bar-row { grid-template-columns: 95px minmax(0, 1fr) 58px; }
+    }
+
+    /* Mobile Layout */
+    @media (max-width: 920px) {
+      .hero-grid,
+      .mindmap-shell,
+      .two-col-split {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-lg);
+      }
+      .kpi-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .mindmap-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn, .pillar-pill-btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-grid">
+
+    <!-- HEADER / BRIEFING DOSSIER -->
+    <header aria-label="Encabezado del dossier laboral">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Dossier Legal · Veralaya Beach SAS</span>
+          <span class="dossier-meta">@veralayabeach · Legislación Colombia · Noviembre 2026</span>
+        </div>
+        <span class="dossier-meta">CST · Ley 2101 de 2021 · Ley 2466 de 2025</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Mapa mental de cumplimiento laboral para Veralaya Beach SAS</h1>
+          <p class="standfirst">Guía práctica e interactiva para regularizar a 11 colaboradores en nómina, formalizar a 3 creativos externos sin riesgo de contrato realidad y operar bajo las reglas vigentes a noviembre de 2026.</p>
+        </div>
+
+        <div class="kpi-strip" aria-label="Diagnóstico inicial del equipo">
+          <div class="figure-card figure-card--compact">
+            <div class="kicker">Equipo Total</div>
+            <div class="value">14</div>
+            <div class="note">Supera umbral de 5: RIT 100% obligatorio</div>
+          </div>
+          <div class="figure-card figure-card--compact">
+            <div class="kicker">En Nómina</div>
+            <div class="value">11</div>
+            <div class="note">Requieren revisión contractual, 42 h y recargos</div>
+          </div>
+          <div class="figure-card figure-card--compact">
+            <div class="kicker">Sin Contrato</div>
+            <div class="value">3</div>
+            <div class="note">Videógrafo, Fotógrafo y Community Manager</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CORE INTERACTIVE ANCHOR: MIND MAP -->
+    <section aria-labelledby="mindmap-heading">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Mapa Mental Interactivo</span>
+          <span class="dossier-meta">Ruta pedagógica en 5 pilares · Haz clic en cualquier nodo o subnodo</span>
+        </div>
+        <span class="dossier-meta" id="mm-progress-badge">Paso 1 de 5</span>
+      </div>
+
+      <h2 id="mindmap-heading" class="section-title" style="margin-bottom: var(--space-sm);">Arquitectura paso a paso del derecho laboral aplicado</h2>
+      <p class="prose muted" style="margin-bottom: var(--space-md);">Explora el mapa desde la raíz de <strong>Veralaya Beach SAS</strong> hacia sus cinco pilares legales. Selecciona un nodo principal o cualquiera de sus 15 ramificaciones para inspeccionar las reglas exactas, cifras de 2026 y acciones inmediatas.</p>
+
+      <div class="mindmap-toolbar">
+        <div class="pillar-pills" role="tablist" aria-label="Pilares del mapa mental">
+          <button type="button" class="pillar-pill-btn is-active" data-pill="p1" onclick="selectNode('p1')">
+            <span class="pill-num">01</span> Contratación
+          </button>
+          <button type="button" class="pillar-pill-btn" data-pill="p2" onclick="selectNode('p2')">
+            <span class="pill-num">02</span> Seguridad y Prestaciones
+          </button>
+          <button type="button" class="pillar-pill-btn" data-pill="p3" onclick="selectNode('p3')">
+            <span class="pill-num">03</span> Jornada 2026
+          </button>
+          <button type="button" class="pillar-pill-btn" data-pill="p4" onclick="selectNode('p4')">
+            <span class="pill-num">04</span> RIT y Debido Proceso
+          </button>
+          <button type="button" class="pillar-pill-btn" data-pill="p5" onclick="selectNode('p5')">
+            <span class="pill-num">05</span> Terminación y Prueba
+          </button>
+        </div>
+
+        <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+          <button type="button" class="btn btn--secondary" id="btn-toggle-subnodes" onclick="toggleAllSubnodes()">
+            Ocultar subramas
+          </button>
+        </div>
+      </div>
+
+      <div class="mindmap-shell">
+        <!-- SVG Mind Map -->
+        <div class="mindmap-canvas-card">
+          <div class="mindmap-svg-wrap">
+            <svg class="mindmap-svg" viewBox="0 0 920 680" role="img" aria-label="Mapa mental interactivo de legislación laboral para Veralaya Beach SAS">
+              <title>Mapa mental interactivo: 5 pilares laborales para Veralaya Beach SAS</title>
+
+              <!-- Root to Pillars Bezier Paths -->
+              <path id="link-p1" class="mm-link is-active" d="M 218 340 C 268 340, 260 76, 310 76" />
+              <path id="link-p2" class="mm-link" d="M 218 340 C 268 340, 260 208, 310 208" />
+              <path id="link-p3" class="mm-link" d="M 218 340 C 268 340, 260 340, 310 340" />
+              <path id="link-p4" class="mm-link" d="M 218 340 C 268 340, 260 472, 310 472" />
+              <path id="link-p5" class="mm-link" d="M 218 340 C 268 340, 260 604, 310 604" />
+
+              <!-- Subnodes connectors (Group so we can toggle visibility) -->
+              <g id="mm-sub-links">
+                <!-- P1 sublinks -->
+                <path class="mm-link--sub sub-of-p1 is-active" d="M 556 76 C 590 76, 590 36, 622 36" />
+                <path class="mm-link--sub sub-of-p1 is-active" d="M 556 76 C 590 76, 590 76, 622 76" />
+                <path class="mm-link--sub sub-of-p1 is-active" d="M 556 76 C 590 76, 590 116, 622 116" />
+                <!-- P2 sublinks -->
+                <path class="mm-link--sub sub-of-p2" d="M 556 208 C 590 208, 590 168, 622 168" />
+                <path class="mm-link--sub sub-of-p2" d="M 556 208 C 590 208, 590 208, 622 208" />
+                <path class="mm-link--sub sub-of-p2" d="M 556 208 C 590 208, 590 248, 622 248" />
+                <!-- P3 sublinks -->
+                <path class="mm-link--sub sub-of-p3" d="M 556 340 C 590 340, 590 300, 622 300" />
+                <path class="mm-link--sub sub-of-p3" d="M 556 340 C 590 340, 590 340, 622 340" />
+                <path class="mm-link--sub sub-of-p3" d="M 556 340 C 590 340, 590 380, 622 380" />
+                <!-- P4 sublinks -->
+                <path class="mm-link--sub sub-of-p4" d="M 556 472 C 590 472, 590 432, 622 432" />
+                <path class="mm-link--sub sub-of-p4" d="M 556 472 C 590 472, 590 472, 622 472" />
+                <path class="mm-link--sub sub-of-p4" d="M 556 472 C 590 472, 590 512, 622 512" />
+                <!-- P5 sublinks -->
+                <path class="mm-link--sub sub-of-p5" d="M 556 604 C 590 604, 590 564, 622 564" />
+                <path class="mm-link--sub sub-of-p5" d="M 556 604 C 590 604, 590 604, 622 604" />
+                <path class="mm-link--sub sub-of-p5" d="M 556 604 C 590 604, 590 644, 622 644" />
+              </g>
+
+              <!-- Central Root Node -->
+              <g id="node-root" class="mm-node mm-node--root" tabindex="0" role="button" aria-label="Nodo central Veralaya Beach SAS" onclick="selectNode('root')" onkeydown="handleNodeKey(event, 'root')">
+                <rect class="mm-box" x="18" y="294" width="200" height="92" rx="6" />
+                <rect class="mm-badge-rect" x="30" y="306" width="96" height="18" rx="2" />
+                <text class="mm-badge-text" x="37" y="319">NÚCLEO EMPRESA</text>
+                <text class="mm-text-title" x="30" y="344">Veralaya Beach SAS</text>
+                <text class="mm-text-sub" x="30" y="364">14 colab. · 11 nómina · 3 ext.</text>
+              </g>
+
+              <!-- PILLAR 01 -->
+              <g id="node-p1" class="mm-node is-selected" tabindex="0" role="button" aria-label="Pilar 01 Tipos de Contratación y Contrato Realidad" onclick="selectNode('p1')" onkeydown="handleNodeKey(event, 'p1')">
+                <rect class="mm-box" x="310" y="42" width="246" height="68" rx="6" />
+                <rect class="mm-badge-rect" x="322" y="52" width="26" height="16" rx="2" />
+                <text class="mm-badge-text" x="328" y="64">01</text>
+                <text class="mm-text-title" x="356" y="65">Contratación y Realidad</text>
+                <text class="mm-text-sub" x="322" y="88">11 en nómina vs 3 creativos externos</text>
+              </g>
+
+              <!-- PILLAR 02 -->
+              <g id="node-p2" class="mm-node" tabindex="0" role="button" aria-label="Pilar 02 Seguridad Social y Prestaciones" onclick="selectNode('p2')" onkeydown="handleNodeKey(event, 'p2')">
+                <rect class="mm-box" x="310" y="174" width="246" height="68" rx="6" />
+                <rect class="mm-badge-rect" x="322" y="184" width="26" height="16" rx="2" />
+                <text class="mm-badge-text" x="328" y="196">02</text>
+                <text class="mm-text-title" x="356" y="197">Seguridad y Prestaciones</text>
+                <text class="mm-text-sub" x="322" y="220">Aportes IBC, prima, cesantías, CCF</text>
+              </g>
+
+              <!-- PILLAR 03 -->
+              <g id="node-p3" class="mm-node" tabindex="0" role="button" aria-label="Pilar 03 Jornada Laboral y Recargos 2026" onclick="selectNode('p3')" onkeydown="handleNodeKey(event, 'p3')">
+                <rect class="mm-box" x="310" y="306" width="246" height="68" rx="6" />
+                <rect class="mm-badge-rect" x="322" y="316" width="26" height="16" rx="2" />
+                <text class="mm-badge-text" x="328" y="328">03</text>
+                <text class="mm-text-title" x="356" y="329">Jornada y Recargos 2026</text>
+                <text class="mm-text-sub" x="322" y="352">42 h/sem · Noct. 35% · Dom. 90%</text>
+              </g>
+
+              <!-- PILLAR 04 -->
+              <g id="node-p4" class="mm-node" tabindex="0" role="button" aria-label="Pilar 04 Reglamento Interno de Trabajo" onclick="selectNode('p4')" onkeydown="handleNodeKey(event, 'p4')">
+                <rect class="mm-box" x="310" y="438" width="246" height="68" rx="6" />
+                <rect class="mm-badge-rect" x="322" y="448" width="26" height="16" rx="2" />
+                <text class="mm-badge-text" x="328" y="460">04</text>
+                <text class="mm-text-title" x="356" y="461">Reglamento Interno (RIT)</text>
+                <text class="mm-text-sub" x="322" y="484">Obligatorio (&gt;5) · Ley 2466/2025</text>
+              </g>
+
+              <!-- PILLAR 05 -->
+              <g id="node-p5" class="mm-node" tabindex="0" role="button" aria-label="Pilar 05 Terminación de Contratos y Periodo de Prueba" onclick="selectNode('p5')" onkeydown="handleNodeKey(event, 'p5')">
+                <rect class="mm-box" x="310" y="570" width="246" height="68" rx="6" />
+                <rect class="mm-badge-rect" x="322" y="580" width="26" height="16" rx="2" />
+                <text class="mm-badge-text" x="328" y="592">05</text>
+                <text class="mm-text-title" x="356" y="593">Terminación y Prueba</text>
+                <text class="mm-text-sub" x="322" y="616">Justa causa · Indemniz. · Estabilidad</text>
+              </g>
+
+              <!-- SUBNODES LAYER -->
+              <g id="mm-sub-nodes">
+                <!-- P1 Subnodes -->
+                <g id="node-p1a" class="mm-node mm-node--sub is-branch-active" data-parent="p1" tabindex="0" role="button" onclick="selectNode('p1a')" onkeydown="handleNodeKey(event, 'p1a')">
+                  <rect class="mm-box" x="622" y="20" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="40">1.1 Contrato laboral (Art. 23 CST)</text>
+                </g>
+                <g id="node-p1b" class="mm-node mm-node--sub is-branch-active" data-parent="p1" tabindex="0" role="button" onclick="selectNode('p1b')" onkeydown="handleNodeKey(event, 'p1b')">
+                  <rect class="mm-box" x="622" y="60" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="80">1.2 Prestación servicios: 3 creativos</text>
+                </g>
+                <g id="node-p1c" class="mm-node mm-node--sub is-branch-active" data-parent="p1" tabindex="0" role="button" onclick="selectNode('p1c')" onkeydown="handleNodeKey(event, 'p1c')">
+                  <rect class="mm-box" x="622" y="100" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="120">1.3 Riesgo de contrato realidad</text>
+                </g>
+
+                <!-- P2 Subnodes -->
+                <g id="node-p2a" class="mm-node mm-node--sub" data-parent="p2" tabindex="0" role="button" onclick="selectNode('p2a')" onkeydown="handleNodeKey(event, 'p2a')">
+                  <rect class="mm-box" x="622" y="152" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="172">2.1 Salud 8.5%/4% · Pensión 12%/4% · ARL</text>
+                </g>
+                <g id="node-p2b" class="mm-node mm-node--sub" data-parent="p2" tabindex="0" role="button" onclick="selectNode('p2b')" onkeydown="handleNodeKey(event, 'p2b')">
+                  <rect class="mm-box" x="622" y="192" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="212">2.2 Prima, Cesantías, Int. 12% y Vac.</text>
+                </g>
+                <g id="node-p2c" class="mm-node mm-node--sub" data-parent="p2" tabindex="0" role="button" onclick="selectNode('p2c')" onkeydown="handleNodeKey(event, 'p2c')">
+                  <rect class="mm-box" x="622" y="232" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="252">2.3 Parafiscales (4%·2%·3%) y Auxilio</text>
+                </g>
+
+                <!-- P3 Subnodes -->
+                <g id="node-p3a" class="mm-node mm-node--sub" data-parent="p3" tabindex="0" role="button" onclick="selectNode('p3a')" onkeydown="handleNodeKey(event, 'p3a')">
+                  <rect class="mm-box" x="622" y="284" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="304">3.1 Reducción a 42 h/sem (Nov. 2026)</text>
+                </g>
+                <g id="node-p3b" class="mm-node mm-node--sub" data-parent="p3" tabindex="0" role="button" onclick="selectNode('p3b')" onkeydown="handleNodeKey(event, 'p3b')">
+                  <rect class="mm-box" x="622" y="324" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="344">3.2 Diurna/Nocturna 35% · Extras 25%/75%</text>
+                </g>
+                <g id="node-p3c" class="mm-node mm-node--sub" data-parent="p3" tabindex="0" role="button" onclick="selectNode('p3c')" onkeydown="handleNodeKey(event, 'p3c')">
+                  <rect class="mm-box" x="622" y="364" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="384">3.3 Dominical y festivo: 90% en 2026</text>
+                </g>
+
+                <!-- P4 Subnodes -->
+                <g id="node-p4a" class="mm-node mm-node--sub" data-parent="p4" tabindex="0" role="button" onclick="selectNode('p4a')" onkeydown="handleNodeKey(event, 'p4a')">
+                  <rect class="mm-box" x="622" y="416" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="436">4.1 Obligatorio: 14 colab. (&gt;5 comercial)</text>
+                </g>
+                <g id="node-p4b" class="mm-node mm-node--sub" data-parent="p4" tabindex="0" role="button" onclick="selectNode('p4b')" onkeydown="handleNodeKey(event, 'p4b')">
+                  <rect class="mm-box" x="622" y="456" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="476">4.2 Horarios, convivencia y escala faltas</text>
+                </g>
+                <g id="node-p4c" class="mm-node mm-node--sub" data-parent="p4" tabindex="0" role="button" onclick="selectNode('p4c')" onkeydown="handleNodeKey(event, 'p4c')">
+                  <rect class="mm-box" x="622" y="496" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="516">4.3 Debido proceso (Ley 2466 de 2025)</text>
+                </g>
+
+                <!-- P5 Subnodes -->
+                <g id="node-p5a" class="mm-node mm-node--sub" data-parent="p5" tabindex="0" role="button" onclick="selectNode('p5a')" onkeydown="handleNodeKey(event, 'p5a')">
+                  <rect class="mm-box" x="622" y="548" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="568">5.1 Justa causa (Art. 62) vs Sin justa</text>
+                </g>
+                <g id="node-p5b" class="mm-node mm-node--sub" data-parent="p5" tabindex="0" role="button" onclick="selectNode('p5b')" onkeydown="handleNodeKey(event, 'p5b')">
+                  <rect class="mm-box" x="622" y="588" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="608">5.2 Liquidación final y periodo de prueba</text>
+                </g>
+                <g id="node-p5c" class="mm-node mm-node--sub" data-parent="p5" tabindex="0" role="button" onclick="selectNode('p5c')" onkeydown="handleNodeKey(event, 'p5c')">
+                  <rect class="mm-box" x="622" y="628" width="280" height="32" rx="4" />
+                  <text class="mm-text-title" x="634" y="648">5.3 Estabilidad laboral reforzada</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <p class="dossier-meta" style="margin: var(--space-sm) 0 0;">Sugerencia: usa las teclas de dirección o haz clic en cada caja para navegar los 5 pilares y sus 15 subramas.</p>
+        </div>
+
+        <!-- Adjacent Live Inspector Panel -->
+        <aside class="inspector-card" aria-live="polite" aria-label="Inspector del nodo seleccionado">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); flex-wrap: wrap;">
+            <span class="tag tag--slate" id="insp-badge">Pilar 01</span>
+            <span class="dossier-meta" id="insp-law">CST Art. 22, 23, 46 y 47</span>
+          </div>
+          <h3 class="card-title" id="insp-title">Tipos de Contratación y Riesgo de Contrato Realidad</h3>
+          <p id="insp-summary" style="margin: 0;">Diferencia legal entre incorporar colaboradores a la estructura jerárquica (contrato laboral) o contratar resultados autónomos (prestación de servicios).</p>
+
+          <ul class="inspector-list" id="insp-points">
+            <li>Tres elementos del contrato de trabajo (Art. 23 CST): prestación personal, subordinación y remuneración.</li>
+            <li>Modalidades laborales: término indefinido (permanente), término fijo (escrito, máx. 4 años) y obra o labor (actividad delimitable).</li>
+            <li>Prestación de servicios: exige autonomía técnica y administrativa; sin horario ni jefe directo.</li>
+          </ul>
+
+          <div class="aside-box">
+            <div class="index-num" style="margin-bottom: var(--space-xs);">Diagnóstico Veralaya Beach SAS</div>
+            <p id="insp-veralaya" style="margin: 0; font-size: 0.9375rem;">Regulariza por escrito las 11 vinculaciones de nómina según su función real y formaliza por prestación de servicios por entregables al Videógrafo, Fotógrafo y Community Manager.</p>
+          </div>
+
+          <div class="inspector-nav">
+            <div style="display: flex; gap: var(--space-xs);">
+              <button type="button" class="btn btn--secondary" id="btn-prev-pillar" onclick="stepPillar(-1)">
+                <i data-lucide="arrow-left" aria-hidden="true" style="width:16px;height:16px;"></i> Anterior
+              </button>
+              <button type="button" class="btn btn--primary" id="btn-next-pillar" onclick="stepPillar(1)">
+                Siguiente <i data-lucide="arrow-right" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <button type="button" class="btn btn--gold" id="btn-jump-section" onclick="jumpToActiveSection()">
+              Ir al simulador ↓
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MODULE 01: CONTRATACION & CONTRATO REALIDAD -->
+    <section id="sec-p1" class="module-section" aria-labelledby="h-p1">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Pilar 01</span>
+          <span class="dossier-meta">CST Art. 22, 23, 46 y 47 · Diagnóstico de los 14 colaboradores</span>
+        </div>
+        <span class="tag tag--alert">Prioridad inmediata: 3 externos sin contrato</span>
+      </div>
+
+      <h2 id="h-p1" class="section-title">01. Tipos de contratación y prevención del contrato realidad</h2>
+      <p class="prose">Antes de firmar, la dirección de <strong>Veralaya Beach SAS</strong> debe responder una pregunta gerencial clave: <em>¿necesita incorporar una persona a su estructura organizacional o comprar un servicio independiente?</em> Si concurren prestación personal, subordinación y remuneración (Art. 23 CST), existe contrato de trabajo sin importar el nombre del documento.</p>
+
+      <div class="two-col-split">
+        <div class="table-wrap">
+          <table class="briefing-table">
+            <thead>
+              <tr>
+                <th>Modalidad</th>
+                <th>Cuándo aplicarla en Veralaya</th>
+                <th>Regla legal clave</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Término indefinido</strong></td>
+                <td>Cargos permanentes de operación, ventas o administración dentro de los 11 de nómina.</td>
+                <td>No tiene fecha de terminación predeterminada; aplica estabilidad ordinaria.</td>
+              </tr>
+              <tr>
+                <td><strong>Término fijo</strong></td>
+                <td>Necesidades con duración determinada (p. ej., temporada alta o reemplazo por 8 meses).</td>
+                <td>Debe constar por escrito y <strong>no superar 4 años</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Obra o labor</strong></td>
+                <td>Actividad específica y delimitable (montaje o adecuación puntual de sede o evento).</td>
+                <td>Finaliza cuando termina efectivamente la obra o labor contratada.</td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>Prestación de servicios</strong></td>
+                <td>Videógrafo, Fotógrafo y Community Manager (los 3 colaboradores externos actuales).</td>
+                <td>Autonomía técnica y administrativa; cero subordinación ni horario impuesto.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Contrato Realidad Diagnostic for the 3 Creatives -->
+        <div class="figure-card">
+          <div class="dossier-bar" style="margin-bottom: var(--space-sm);">
+            <span class="index-num">Simulador Veralaya · 3 Creativos Externos</span>
+            <span class="tag tag--ok" id="cr-risk-badge">Riesgo Bajo</span>
+          </div>
+          <h3 class="card-title" style="margin-bottom: var(--space-xs);">Test de contrato realidad (Videógrafo, Fotógrafo y CM)</h3>
+          <p class="muted" style="font-size: 0.9rem; margin: 0 0 var(--space-md);">Marca las prácticas actuales en tu relación con los 3 creativos para evaluar el riesgo de que un juez declare contrato laboral:</p>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+            <label class="toggle-row">
+              <span>Cumplen horario fijo de lunes a viernes</span>
+              <input type="checkbox" class="cr-check" onchange="evaluateContratoRealidad()">
+            </label>
+            <label class="toggle-row">
+              <span>Tienen jefe directo y reciben órdenes permanentes</span>
+              <input type="checkbox" class="cr-check" onchange="evaluateContratoRealidad()">
+            </label>
+            <label class="toggle-row">
+              <span>Deben pedir permisos para ausentarse</span>
+              <input type="checkbox" class="cr-check" onchange="evaluateContratoRealidad()">
+            </label>
+            <label class="toggle-row">
+              <span>Reciben suma fija mensual sin acta de entregables</span>
+              <input type="checkbox" class="cr-check" onchange="evaluateContratoRealidad()">
+            </label>
+            <label class="toggle-row">
+              <span>Ejecutan las mismas funciones que un empleado de planta</span>
+              <input type="checkbox" class="cr-check" onchange="evaluateContratoRealidad()">
+            </label>
+          </div>
+
+          <div class="aside-box" style="margin-top: var(--space-md);">
+            <div class="index-num">Dictamen y blindaje recomendado</div>
+            <p id="cr-advice" style="margin: var(--space-xs) 0 0; font-size: 0.92rem;">Sin señales críticas marcadas. Formaliza por escrito contratos de prestación de servicios basados en entregables concretos (piezas audiovisuales, sesiones fotográficas, parrilla mensual), con autonomía de horarios y coordinación sin subordinación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 02: SEGURIDAD SOCIAL, PRESTACIONES Y PARAFISCALES -->
+    <section id="sec-p2" class="module-section" aria-labelledby="h-p2">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Pilar 02</span>
+          <span class="dossier-meta">CST Art. 186, 249 · Ley 100 de 1993 · Nómina de 11 colaboradores</span>
+        </div>
+        <span class="tag">Diferenciar aportes vs prestaciones</span>
+      </div>
+
+      <h2 id="h-p2" class="section-title">02. Seguridad social, prestaciones sociales y parafiscales</h2>
+      <p class="prose">Toda vinculación laboral dentro de los <strong>11 colaboradores en nómina</strong> obliga a Veralaya Beach SAS a liquidar tres bloques distintos sobre el Ingreso Base de Cotización (IBC) o el salario: seguridad social, prestaciones sociales y aportes parafiscales.</p>
+
+      <div class="two-col-split">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="table-wrap">
+            <table class="briefing-table">
+              <thead>
+                <tr>
+                  <th>Seguridad Social / Parafiscal</th>
+                  <th class="num">Empleador</th>
+                  <th class="num">Trabajador</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Salud</strong> (sujeto a exoneración legal según renta y salario)</td>
+                  <td class="num">8,5 %</td>
+                  <td class="num">4 %</td>
+                </tr>
+                <tr>
+                  <td><strong>Pensión</strong> (+ Fondo de Solidaridad Pensional cuando aplique)</td>
+                  <td class="num">12 %</td>
+                  <td class="num">4 %</td>
+                </tr>
+                <tr>
+                  <td><strong>ARL</strong> (según nivel de riesgo de la actividad)</td>
+                  <td class="num">0,522–6,96 %</td>
+                  <td class="num">0 %</td>
+                </tr>
+                <tr>
+                  <td><strong>Caja de Compensación Familiar (CCF)</strong></td>
+                  <td class="num">4 %</td>
+                  <td class="num">0 %</td>
+                </tr>
+                <tr>
+                  <td><strong>SENA / ICBF</strong> (cuando no exista exoneración legal)</td>
+                  <td class="num">2 % + 3 %</td>
+                  <td class="num">0 %</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-wrap">
+            <table class="briefing-table">
+              <thead>
+                <tr>
+                  <th>Prestación social</th>
+                  <th>Regla y fórmula general</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Prima de servicios</strong></td>
+                  <td>30 días/año en dos cuotas: <code>Salario × días / 360</code> (incluye auxilio de transporte si aplica).</td>
+                </tr>
+                <tr>
+                  <td><strong>Cesantías</strong></td>
+                  <td>1 mes/año: <code>Salario × días / 360</code> (incluye auxilio de transporte si aplica).</td>
+                </tr>
+                <tr>
+                  <td><strong>Intereses a las cesantías</strong></td>
+                  <td>12 % anual sobre causadas: <code>Cesantías × días × 0,12 / 360</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Vacaciones</strong></td>
+                  <td>15 días hábiles/año: <code>Salario básico × días / 720</code> (no incluye auxilio de transporte).</td>
+                </tr>
+                <tr>
+                  <td><strong>Otros obligatorios</strong></td>
+                  <td>Dotación (si cumple requisitos), licencias remuneradas y auxilio de transporte (cuando corresponda).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Interactive Payroll & Prestaciones Calculator -->
+        <div class="figure-card">
+          <div class="dossier-bar" style="margin-bottom: var(--space-sm);">
+            <span class="index-num">Calculadora de Nómina · Veralaya</span>
+            <span class="tag tag--slate">Base ejemplo: $3.000.000</span>
+          </div>
+          <h3 class="card-title" style="margin-bottom: var(--space-sm);">Costo real mensual y prestaciones anuales</h3>
+
+          <div class="control-grid">
+            <div class="field-group">
+              <label class="field-label" for="calc-salary">Salario mensual (COP)</label>
+              <input class="field-input" type="number" id="calc-salary" value="3000000" min="1000000" step="100000" oninput="recalcPayroll()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="calc-workers">Colaboradores en nómina</label>
+              <input class="field-input" type="number" id="calc-workers" value="11" min="1" max="500" step="1" oninput="recalcPayroll()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="calc-arl">Nivel de riesgo ARL</label>
+              <select class="field-select" id="calc-arl" onchange="recalcPayroll()">
+                <option value="0.00522">Nivel I — Comercial / Admin (0,522 %)</option>
+                <option value="0.01044">Nivel II — Riesgo bajo (1,044 %)</option>
+                <option value="0.02436">Nivel III — Riesgo medio (2,436 %)</option>
+                <option value="0.04350">Nivel IV — Riesgo alto (4,350 %)</option>
+                <option value="0.06960">Nivel V — Riesgo máximo (6,960 %)</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="toggle-row" style="margin-top: var(--space-sm);">
+            <span>Aplicar exoneración patronal de Salud (8,5 %), SENA (2 %) e ICBF (3 %)</span>
+            <input type="checkbox" id="calc-exon" onchange="recalcPayroll()">
+          </label>
+
+          <div class="calc-results">
+            <div class="calc-stat">
+              <div class="calc-stat-label">Prima + Cesantías (año)</div>
+              <div class="calc-stat-val" id="out-prima-ces">$6.000.000</div>
+            </div>
+            <div class="calc-stat calc-stat--gold">
+              <div class="calc-stat-label">Int. Cesantías + Vac. (año)</div>
+              <div class="calc-stat-val" id="out-int-vac">$1.860.000</div>
+            </div>
+            <div class="calc-stat calc-stat--green">
+              <div class="calc-stat-label">Costo mensual / persona</div>
+              <div class="calc-stat-val" id="out-cost-one">$4.610.660</div>
+            </div>
+            <div class="calc-stat">
+              <div class="calc-stat-label">Total mensual nómina (×<span id="out-n-workers">11</span>)</div>
+              <div class="calc-stat-val" id="out-cost-all">$50.717.260</div>
+            </div>
+          </div>
+
+          <p class="muted" style="font-size: 0.85rem; margin: var(--space-sm) 0 0;" id="out-payroll-detail">Desglose por 1 trabajador ($3.000.000/mes, año completo sin auxilio de transporte): Prima $3.000.000, Cesantías $3.000.000, Intereses $360.000, Vacaciones $1.500.000. Aportes empleador mes: Seguridad Social + Parafiscales + provisión prestacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 03: JORNADA LABORAL Y RECARGOS 2026 -->
+    <section id="sec-p3" class="module-section" aria-labelledby="h-p3">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Pilar 03</span>
+          <span class="dossier-meta">CST Art. 160, 161, 168, 179 · Ley 2101 de 2021 · Ley 2466 de 2025</span>
+        </div>
+        <span class="tag tag--warn">Vigente nov. 2026: 42 h/sem · Dominical 90 %</span>
+      </div>
+
+      <h2 id="h-p3" class="section-title">03. Jornada laboral y recargos actualizados a noviembre de 2026</h2>
+      <p class="prose">Desde julio de 2026 rige en Colombia la jornada máxima legal de <strong>42 horas semanales</strong> (sin disminuir el salario ni derechos adquiridos) y el recargo dominical y festivo del <strong>90 %</strong>. Con la reforma de la Ley 2466 de 2025, la jornada nocturna comienza a las <strong>7:00 p. m.</strong></p>
+
+      <div class="two-col-split">
+        <!-- Visualizations of 2026 transitions -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="figure-card card-wrapper">
+            <div class="kicker">Ley 2101 de 2021 · Reducción gradual</div>
+            <h3 class="card-title">Evolución de la jornada máxima semanal</h3>
+            <div class="bar-chart" aria-label="Evolución de la jornada semanal de 48 a 42 horas">
+              <div class="bar-row">
+                <span class="bar-label">Antes jul. 2023</span>
+                <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
+                <span class="bar-val">48 h</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Julio 2023</span>
+                <div class="bar-track"><div class="bar-fill" style="width: 97.9%;"></div></div>
+                <span class="bar-val">47 h</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Julio 2024</span>
+                <div class="bar-track"><div class="bar-fill" style="width: 95.8%;"></div></div>
+                <span class="bar-val">46 h</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Julio 2025</span>
+                <div class="bar-track"><div class="bar-fill" style="width: 91.7%;"></div></div>
+                <span class="bar-val">44 h</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label"><strong>Nov. 2026 (Hoy)</strong></span>
+                <div class="bar-track"><div class="bar-fill bar-fill--current" style="width: 87.5%;"></div></div>
+                <span class="bar-val">42 h</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="figure-card card-wrapper">
+            <div class="kicker">Ley 2466 de 2025 · Recargos vigentes</div>
+            <h3 class="card-title">Horarios y evolución dominical/festivo</h3>
+            <div class="bar-chart" aria-label="Incremento del recargo dominical y festivo">
+              <div class="bar-row">
+                <span class="bar-label">1 jul. 2025</span>
+                <div class="bar-track"><div class="bar-fill" style="width: 80%;"></div></div>
+                <span class="bar-val">80 %</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label"><strong>Nov. 2026 (Hoy)</strong></span>
+                <div class="bar-track"><div class="bar-fill bar-fill--gold" style="width: 90%;"></div></div>
+                <span class="bar-val">90 %</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">1 jul. 2027</span>
+                <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
+                <span class="bar-val">100 %</span>
+              </div>
+            </div>
+            <div style="margin-top: var(--space-md); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); font-size: 0.9rem;">
+              <div class="aside-box">
+                <div class="index-num">Jornada diurna</div>
+                <strong>6:00 a. m. – 7:00 p. m.</strong>
+                <div class="muted">Extra diurna: +25 %</div>
+              </div>
+              <div class="aside-box">
+                <div class="index-num">Jornada nocturna</div>
+                <strong>7:00 p. m. – 6:00 a. m.</strong>
+                <div class="muted">Recargo: +35 % · Extra noct.: +75 %</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive 2026 Surcharges Simulator -->
+        <div class="figure-card">
+          <div class="dossier-bar" style="margin-bottom: var(--space-sm);">
+            <span class="index-num">Simulador de Recargos · Noviembre 2026</span>
+            <span class="tag tag--slate">Límite extras: 2 h/día · 12 h/sem</span>
+          </div>
+          <h3 class="card-title" style="margin-bottom: var(--space-sm);">Calcula el valor real de la hora y los recargos</h3>
+
+          <div class="control-grid">
+            <div class="field-group">
+              <label class="field-label" for="rec-hora">Valor hora ordinaria (COP)</label>
+              <input class="field-input" type="number" id="rec-hora" value="10000" min="1000" step="500" oninput="recalcRecargos()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="rec-h-noct">Horas nocturnas (+35 %)</label>
+              <input class="field-input" type="number" id="rec-h-noct" value="0" min="0" max="200" step="1" oninput="recalcRecargos()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="rec-h-exd">Extras diurnas (+25 %)</label>
+              <input class="field-input" type="number" id="rec-h-exd" value="0" min="0" max="60" step="1" oninput="recalcRecargos()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="rec-h-exn">Extras nocturnas (+75 %)</label>
+              <input class="field-input" type="number" id="rec-h-exn" value="0" min="0" max="60" step="1" oninput="recalcRecargos()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="rec-h-dom">Horas dominical/festivo (+90 %)</label>
+              <input class="field-input" type="number" id="rec-h-dom" value="1" min="0" max="100" step="1" oninput="recalcRecargos()">
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-stat">
+              <div class="calc-stat-label">Hora dominical hoy (90 %)</div>
+              <div class="calc-stat-val" id="out-dom-unit">$19.000</div>
+            </div>
+            <div class="calc-stat calc-stat--gold">
+              <div class="calc-stat-label">Hora extra nocturna (75 %)</div>
+              <div class="calc-stat-val" id="out-exn-unit">$17.500</div>
+            </div>
+            <div class="calc-stat calc-stat--green">
+              <div class="calc-stat-label">Total liquidado por turno</div>
+              <div class="calc-stat-val" id="out-rec-total">$19.000</div>
+            </div>
+          </div>
+
+          <div class="aside-box" style="margin-top: var(--space-md);">
+            <div class="index-num">Control operativo para Veralaya Beach SAS</div>
+            <p style="margin: var(--space-xs) 0 0; font-size: 0.9rem;">Lleva registro escrito de horas extras (máximo 2 diarias / 12 semanales), distribuye las 42 horas en 5 o 6 días con descanso obligatorio y distingue si el trabajo dominical es ocasional o habitual para definir el descanso compensatorio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 04: REGLAMENTO INTERNO DE TRABAJO (RIT) -->
+    <section id="sec-p4" class="module-section" aria-labelledby="h-p4">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Pilar 04</span>
+          <span class="dossier-meta">CST Art. 104 al 120 · Ley 2466 de 2025 · Umbral legal superado</span>
+        </div>
+        <span class="tag tag--alert">14 colaboradores: 100 % obligatorio</span>
+      </div>
+
+      <h2 id="h-p4" class="section-title">04. Reglamento Interno de Trabajo (RIT) y debido proceso disciplinario</h2>
+      <p class="prose">El artículo 105 del CST exige Reglamento Interno de Trabajo en empresas comerciales con <strong>más de 5 trabajadores permanentes</strong>. Con <strong>14 colaboradores</strong>, Veralaya Beach SAS está plenamente obligada a tenerlo actualizado y a respetar los 7 pasos del debido proceso reforzado por la Ley 2466 de 2025 antes de sancionar.</p>
+
+      <div class="two-col-split">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="table-wrap">
+            <table class="briefing-table">
+              <thead>
+                <tr>
+                  <th>Tipo de empresa (Art. 105 CST)</th>
+                  <th class="num">Umbral obligatorio</th>
+                  <th>Estado Veralaya (14)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td><strong>Comercial</strong></td>
+                  <td class="num">Más de 5</td>
+                  <td><span class="tag tag--alert">Obligatorio (14 &gt; 5)</span></td>
+                </tr>
+                <tr>
+                  <td>Industrial / Mixtas</td>
+                  <td class="num">Más de 10</td>
+                  <td>Supera umbral</td>
+                </tr>
+                <tr>
+                  <td>Agrícola, ganadera o forestal</td>
+                  <td class="num">Más de 20</td>
+                  <td>Referencia sectorial</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="figure-card">
+            <div class="kicker">Contenido esencial del RIT</div>
+            <ul class="inspector-list" style="margin-top: var(--space-xs); font-size: 0.9375rem;">
+              <li>Horarios de trabajo, entradas, salidas y descansos (ajustados a 42 h/sem).</li>
+              <li>Obligaciones y prohibiciones de trabajadores y empleador.</li>
+              <li>Escala previa de faltas y sanciones proporcionales (llegadas tarde, incumplimientos, ausencias injustificadas, faltas graves).</li>
+              <li>Procedimiento disciplinario, mecanismos de reclamación, SST y prevención del acoso laboral.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive 7-step Due Process Explorer (Ley 2466 de 2025) -->
+        <div class="figure-card">
+          <div class="dossier-bar" style="margin-bottom: var(--space-sm);">
+            <span class="index-num">Ley 2466 de 2025 · Ruta Disciplinaria</span>
+            <span class="tag tag--slate">7 garantías mínimas</span>
+          </div>
+          <h3 class="card-title" style="margin-bottom: var(--space-sm);">Protocolo paso a paso para sancionar sin nulidades</h3>
+
+          <div class="stepper-tabs" role="tablist" aria-label="Pasos del debido proceso disciplinario">
+            <button type="button" class="step-btn is-active" data-step="0" onclick="selectDueStep(0)"><span class="step-num-pill">01</span> Apertura</button>
+            <button type="button" class="step-btn" data-step="1" onclick="selectDueStep(1)"><span class="step-num-pill">02</span> Hechos</button>
+            <button type="button" class="step-btn" data-step="2" onclick="selectDueStep(2)"><span class="step-num-pill">03</span> Pruebas</button>
+            <button type="button" class="step-btn" data-step="3" onclick="selectDueStep(3)"><span class="step-num-pill">04</span> Descargos</button>
+            <button type="button" class="step-btn" data-step="4" onclick="selectDueStep(4)"><span class="step-num-pill">05</span> Controver.</button>
+            <button type="button" class="step-btn" data-step="5" onclick="selectDueStep(5)"><span class="step-num-pill">06</span> Decisión</button>
+            <button type="button" class="step-btn" data-step="6" onclick="selectDueStep(6)"><span class="step-num-pill">07</span> Impugnación</button>
+          </div>
+
+          <div class="aside-box" style="margin-top: var(--space-md);">
+            <div class="index-num" id="dp-step-tag">Garantía 01 de 07</div>
+            <h4 class="card-title" id="dp-step-title" style="margin: var(--space-xs) 0;">Comunicación formal de apertura del proceso</h4>
+            <p id="dp-step-desc" style="margin: 0; font-size: 0.9375rem;">Notifica por escrito al colaborador el inicio formal de la actuación disciplinaria indicando fecha, hora y modalidad de la citación a descargos.</p>
+          </div>
+          <p class="muted" style="font-size: 0.85rem; margin: var(--space-sm) 0 0;">Nota: la Ley 2466 de 2025 contempla reglas específicas y excepciones para determinadas micro y pequeñas empresas; revisa la aplicación exacta según el tamaño y naturaleza de Veralaya Beach SAS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 05: TERMINACIÓN DE CONTRATOS, PERIODO DE PRUEBA Y ESTABILIDAD -->
+    <section id="sec-p5" class="module-section" aria-labelledby="h-p5">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Pilar 05</span>
+          <span class="dossier-meta">CST Art. 62, 64 y 76 al 80 · Cierre seguro de relaciones laborales</span>
+        </div>
+        <span class="tag tag--ok">Control de contingencias</span>
+      </div>
+
+      <h2 id="h-p5" class="section-title">05. Terminación de contratos, periodo de prueba y estabilidad reforzada</h2>
+      <p class="prose">Despedir sin documentación o ignorar protecciones especiales convierte una salida rutinaria en una orden judicial de reintegro e indemnización. Antes de terminar cualquier vínculo, verifica si hay <strong>estabilidad laboral reforzada</strong>, documenta la causal y liquida todas las acreencias causadas.</p>
+
+      <div class="two-col-split">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="card-grid">
+            <div class="figure-card">
+              <span class="tag tag--ok" style="margin-bottom: var(--space-xs);">Con justa causa (Art. 62 CST)</span>
+              <h3 class="card-title" style="margin-bottom: var(--space-xs);">Sin indemnización, con prueba plena</h3>
+              <ul class="inspector-list" style="font-size: 0.9rem;">
+                <li>Incumplimiento grave de obligaciones, violencia/injuria, embriaguez o sustancias prohibidas, revelación de secretos o abandono injustificado.</li>
+                <li>Reúne pruebas, escucha al trabajador y entrega carta escrita con hechos y causal precisa.</li>
+                <li>Evita frases genéricas como «pérdida de confianza» o «bajo rendimiento» sin soportes.</li>
+              </ul>
+            </div>
+
+            <div class="figure-card">
+              <span class="tag tag--warn" style="margin-bottom: var(--space-xs);">Estabilidad reforzada</span>
+              <h3 class="card-title" style="margin-bottom: var(--space-xs);">Verificación previa obligatoria</h3>
+              <ul class="inspector-list" style="font-size: 0.9rem;">
+                <li>Trabajadoras embarazadas o en situaciones protegidas de maternidad.</li>
+                <li>Colaboradores con afectaciones de salud relevantes.</li>
+                <li>Fuero sindical u otras garantías legales especiales (pueden exigir permiso previo).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="kicker">Liquidación final obligatoria (en toda terminación, incluso renuncia voluntaria)</div>
+            <p style="margin: var(--space-xs) 0 0; font-size: 0.9375rem;">Salarios causados no pagados + prima proporcional + cesantías proporcionales + intereses a las cesantías + vacaciones pendientes + horas extras y recargos pendientes + indemnización (si termina sin justa causa).</p>
+          </div>
+        </div>
+
+        <!-- Interactive Trial Period & Severance Calculator -->
+        <div class="figure-card">
+          <div class="dossier-bar" style="margin-bottom: var(--space-sm);">
+            <span class="index-num">Calculadora Art. 64 y Art. 78 CST</span>
+            <span class="tag tag--slate">Ejemplos CST precargados</span>
+          </div>
+          <h3 class="card-title" style="margin-bottom: var(--space-sm);">Periodo de prueba e indemnización sin justa causa</h3>
+
+          <div class="control-grid">
+            <div class="field-group">
+              <label class="field-label" for="term-type">Modalidad contractual</label>
+              <select class="field-select" id="term-type" onchange="recalcTermination()">
+                <option value="indef-lt10">Indefinido (&lt; 10 SMMLV)</option>
+                <option value="indef-ge10">Indefinido (≥ 10 SMMLV)</option>
+                <option value="fijo">Término fijo</option>
+                <option value="obra">Obra o labor</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="term-salary">Salario mensual (COP)</label>
+              <input class="field-input" type="number" id="term-salary" value="3000000" min="500000" step="100000" oninput="recalcTermination()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="term-months">Antigüedad / Duración pactada (meses)</label>
+              <input class="field-input" type="number" id="term-months" value="24" min="1" max="240" step="1" oninput="recalcTermination()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="term-rem-days">Días faltantes (solo si es Fijo / Obra)</label>
+              <input class="field-input" type="number" id="term-rem-days" value="60" min="1" max="1460" step="1" oninput="recalcTermination()">
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-stat">
+              <div class="calc-stat-label">Periodo de prueba máximo</div>
+              <div class="calc-stat-val" id="out-trial-max">60 días (2 meses)</div>
+            </div>
+            <div class="calc-stat calc-stat--gold">
+              <div class="calc-stat-label">Días de indemnización</div>
+              <div class="calc-stat-val" id="out-indem-days">50 días</div>
+            </div>
+            <div class="calc-stat calc-stat--red">
+              <div class="calc-stat-label">Indemnización estimada</div>
+              <div class="calc-stat-val" id="out-indem-val">$5.000.000</div>
+            </div>
+          </div>
+
+          <p class="muted" style="font-size: 0.85rem; margin: var(--space-sm) 0 0;" id="out-term-note">En contrato indefinido menor a 10 SMMLV con 2 años de antigüedad: 30 días por el primer año + 20 días por el segundo año = 50 días ($5.000.000), independiente de la liquidación final.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION PLAN & PERSISTED CHECKLIST FOR VERALAYA BEACH SAS -->
+    <section aria-labelledby="h-plan" class="module-section">
+      <div class="dossier-bar">
+        <div class="dossier-bar-left">
+          <span class="dossier-pill">Plan de Acción · Veralaya Beach SAS</span>
+          <span class="dossier-meta">Seguimiento operativo guardado automáticamente</span>
+        </div>
+        <span class="tag tag--ok" id="plan-status-tag">0 de 8 completadas</span>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--space-md);">
+        <div>
+          <h2 id="h-plan" class="section-title">Hoja de ruta de regularización (14 colaboradores)</h2>
+          <p class="muted" style="margin: var(--space-xs) 0 0;">Marca cada hito implementado en Veralaya Beach SAS; tu avance se guarda en tu cuaderno.</p>
+        </div>
+        <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+          <button type="button" class="btn btn--secondary" onclick="exportSummary()">Exportar resumen (.txt)</button>
+          <button type="button" class="btn btn--secondary" id="btn-reset-plan" onclick="resetChecklist(this)">Reiniciar avance</button>
+        </div>
+      </div>
+
+      <div class="figure-card figure-card--compact">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="index-num">Progreso de cumplimiento laboral 2026</span>
+          <span class="index-num" id="plan-pct">0 %</span>
+        </div>
+        <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="plan-progressbar">
+          <div class="progress-bar-fill" id="plan-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="checklist-grid" id="checklist-container">
+        <label class="check-item" data-check-id="c1">
+          <input type="checkbox" onchange="toggleChecklistItem('c1', this)">
+          <div>
+            <strong>1. Auditar contratos de los 11 colaboradores en nómina</strong>
+            <div class="muted" style="font-size: 0.875rem;">Verificar modalidad escrita (indefinido, fijo ≤ 4 años u obra/labor) y periodo de prueba pactado por escrito.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c2">
+          <input type="checkbox" onchange="toggleChecklistItem('c2', this)">
+          <div>
+            <strong>2. Formalizar prestación de servicios del Videógrafo</strong>
+            <div class="muted" style="font-size: 0.875rem;">Contrato por entregables audiovisuales, honorarios por producto y autonomía de horarios.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c3">
+          <input type="checkbox" onchange="toggleChecklistItem('c3', this)">
+          <div>
+            <strong>3. Formalizar al Fotógrafo y al Community Manager</strong>
+            <div class="muted" style="font-size: 0.875rem;">Eliminar órdenes de horario fijo, solicitud de permisos e integración jerárquica para prevenir contrato realidad.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c4">
+          <input type="checkbox" onchange="toggleChecklistItem('c4', this)">
+          <div>
+            <strong>4. Verificar afiliación y aportes mensuales (IBC)</strong>
+            <div class="muted" style="font-size: 0.875rem;">Validar Salud (8,5 %/4 %), Pensión (12 %/4 %), ARL, CCF (4 %) y provisiones de prima, cesantías, intereses y vacaciones.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c5">
+          <input type="checkbox" onchange="toggleChecklistItem('c5', this)">
+          <div>
+            <strong>5. Ajustar mallas de turnos a 42 horas semanales</strong>
+            <div class="muted" style="font-size: 0.875rem;">Distribuir en 5 o 6 días garantizando descanso obligatorio sin reducir salarios.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c6">
+          <input type="checkbox" onchange="toggleChecklistItem('c6', this)">
+          <div>
+            <strong>6. Configurar nómina con recargos de noviembre 2026</strong>
+            <div class="muted" style="font-size: 0.875rem;">Nocturno desde las 7:00 p. m. (35 %), extras (25 % / 75 %) y dominical/festivo al 90 %.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c7">
+          <input type="checkbox" onchange="toggleChecklistItem('c7', this)">
+          <div>
+            <strong>7. Adoptar y publicar Reglamento Interno de Trabajo (RIT)</strong>
+            <div class="muted" style="font-size: 0.875rem;">Obligatorio por tener 14 colaboradores (&gt;5 comercial); incluir escala de faltas y procedimiento disciplinario Ley 2466 de 2025.</div>
+          </div>
+        </label>
+        <label class="check-item" data-check-id="c8">
+          <input type="checkbox" onchange="toggleChecklistItem('c8', this)">
+          <div>
+            <strong>8. Protocolo de terminación y estabilidad reforzada</strong>
+            <div class="muted" style="font-size: 0.875rem;">Check previo de maternidad, salud y fuero antes de cualquier despido, más carta motivada y liquidación oportuna.</div>
+          </div>
+        </label>
+      </div>
+      <div id="plan-feedback" class="dossier-meta" aria-live="polite"></div>
+    </section>
+
+    <!-- REFERENCE MATRIX & NORMATIVITY -->
+    <footer style="border-top: var(--section-rule); padding-top: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md);">
+      <div class="dossier-bar" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+        <span class="dossier-pill">Marco Normativo de Referencia</span>
+        <span class="dossier-meta">Guía académica y gerencial · Consultar asesoría jurídica para casos concretos</span>
+      </div>
+      <div class="table-wrap">
+        <table class="briefing-table">
+          <thead>
+            <tr>
+              <th>Norma</th>
+              <th>Materia regulada</th>
+              <th>Aplicación directa en Veralaya Beach SAS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CST, arts. 22, 23, 46 y 47</strong></td>
+              <td>Elementos del contrato de trabajo y modalidades</td>
+              <td>Deslindar los 11 trabajadores subordinados de los 3 creativos autónomos.</td>
+            </tr>
+            <tr>
+              <td><strong>CST, arts. 62, 64 y 76–80</strong></td>
+              <td>Justas causas, indemnizaciones y periodo de prueba</td>
+              <td>Pactar prueba por escrito (máx. 2 meses o 1/5 en fijo &lt;1 año) y documentar despidos.</td>
+            </tr>
+            <tr>
+              <td><strong>CST, arts. 104–120</strong></td>
+              <td>Reglamento Interno de Trabajo y régimen disciplinario</td>
+              <td>Exigible por superar 5 trabajadores en empresa comercial (14 colaboradores).</td>
+            </tr>
+            <tr>
+              <td><strong>CST, arts. 160, 161, 168, 179, 186, 249</strong></td>
+              <td>Jornada, recargos, vacaciones y cesantías</td>
+              <td>Liquidación exacta de horas nocturnas, extras, prestaciones y descansos.</td>
+            </tr>
+            <tr>
+              <td><strong>Ley 100/1993 · Ley 2101/2021 · Ley 2466/2025</strong></td>
+              <td>Seguridad social, 42 h/sem, nocturno 7 p. m., dominical 90 % y debido proceso</td>
+              <td>Normativa vigente a noviembre de 2026 para nómina, turnos y sanciones.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="font-size: 0.85rem; margin: 0;">Fuente base: «Guía práctica de derecho laboral colombiano» (Código Sustantivo del Trabajo, Ley 2101 de 2021 y Ley 2466 de 2025). Documento orientativo para toma de decisiones gerenciales en Veralaya Beach SAS.</p>
+    </footer>
+
+  </main>
+
+  <api-shim></api-shim>
+  <script>
+    const MIND_MAP_DATA = {
+      root: {
+        badge: `Núcleo Empresa`,
+        law: `Diagnóstico Noviembre 2026`,
+        title: `Veralaya Beach SAS (@veralayabeach)`,
+        summary: `Estructura actual de 14 colaboradores: 11 en nómina y 3 externos (Videógrafo, Fotógrafo y Community Manager) sin contrato formal.`,
+        points: [
+          `Al superar 5 trabajadores permanentes en actividad comercial, el Reglamento Interno de Trabajo (RIT) es 100 % obligatorio.`,
+          `Las 11 personas en nómina deben operar bajo jornada máxima de 42 h/sem y recargo dominical del 90 % vigente en noviembre de 2026.`,
+          `Los 3 colaboradores externos representan el mayor foco de contingencia por eventual demanda de contrato realidad si trabajan bajo subordinación.`
+        ],
+        veralaya: `Prioridad 1: formalizar por escrito los 3 contratos de prestación de servicios por entregables y auditar los 11 contratos de nómina.`,
+        sectionId: `sec-p1`,
+        parentPillar: `p1`
+      },
+      p1: {
+        badge: `Pilar 01`,
+        law: `CST Arts. 22, 23, 46 y 47`,
+        title: `Tipos de Contratación y Contrato Realidad`,
+        summary: `Distingue cuándo incorporar talento a la estructura subordinada (contrato laboral) y cuándo contratar resultados independientes (prestación de servicios).`,
+        points: [
+          `Contrato laboral (Art. 23 CST): concurren prestación personal, subordinación y remuneración.`,
+          `Modalidades: término indefinido (permanente), término fijo (escrito, máximo 4 años) y obra o labor (actividad delimitable).`,
+          `Contrato realidad: prevalece la realidad sobre el nombre; si hay horario fijo, jefe y permisos, el juez declara relación laboral.`
+        ],
+        veralaya: `Asegura contratos escritos para tus 11 empleados en nómina y vincula al Videógrafo, Fotógrafo y Community Manager por entregables sin horario impuesto.`,
+        sectionId: `sec-p1`,
+        parentPillar: `p1`
+      },
+      p1a: {
+        badge: `Subnodo 1.1`,
+        law: `CST Arts. 23, 46 y 47`,
+        title: `Contrato laboral: Fijo, Indefinido y Obra o Labor`,
+        summary: `Aplica a los 11 colaboradores de nómina que cumplen funciones continuas bajo dirección de la empresa.`,
+        points: [
+          `Término indefinido: cargos permanentes sin fecha de fin predeterminada.`,
+          `Término fijo: siempre por escrito y sin superar 4 años (ideal para proyectos temporales delimitados).`,
+          `Obra o labor: termina cuando concluye efectivamente la obra o actividad específica contratada.`
+        ],
+        veralaya: `Clasifica cada uno de los 11 puestos de nómina según si su necesidad es permanente o temporal.`,
+        sectionId: `sec-p1`,
+        parentPillar: `p1`
+      },
+      p1b: {
+        badge: `Subnodo 1.2`,
+        law: `Autonomía civil/comercial`,
+        title: `Prestación de servicios para los 3 creativos`,
+        summary: `Vehículo adecuado para Videógrafo, Fotógrafo y Community Manager únicamente si conservan autonomía técnica y administrativa.`,
+        points: [
+          `Definir obligaciones por entregables concretos (videos editados, sesiones de fotos, calendario editorial).`,
+          `Pactar coordinaciones operativas de rodaje o publicación sin imponer jornada diaria ni jerarquía laboral.`,
+          `No exigir solicitud de permisos laborales como a empleados de planta.`
+        ],
+        veralaya: `Redacta de inmediato los 3 contratos pendientes especificando alcance, entregables, plazos y autonomía.`,
+        sectionId: `sec-p1`,
+        parentPillar: `p1`
+      },
+      p1c: {
+        badge: `Subnodo 1.3`,
+        law: `Primacía de la realidad`,
+        title: `Cómo evitar el riesgo de contrato realidad`,
+        summary: `Si un contratista sin contrato o por servicios actúa como empleado de planta, un juez puede ordenar prestaciones, vacaciones y aportes retroactivos.`,
+        points: [
+          `Evitar horarios obligatorios de lunes a viernes para los 3 externos.`,
+          `No integrarlos al organigrama con jefe directo ni asignarles turnos operativos fijos.`,
+          `Documentar actas de entrega y facturación o cuentas de cobro asociadas a resultados.`
+        ],
+        veralaya: `Usa el test interactivo del Pilar 01 abajo para auditar hoy mismo tu relación con los 3 creativos.`,
+        sectionId: `sec-p1`,
+        parentPillar: `p1`
+      },
+      p2: {
+        badge: `Pilar 02`,
+        law: `CST Arts. 186, 249 · Ley 100/1993`,
+        title: `Seguridad Social, Prestaciones y Parafiscales`,
+        summary: `Obligaciones económicas obligatorias por cada uno de los 11 trabajadores en nómina, calculadas sobre el IBC o el salario.`,
+        points: [
+          `Seguridad social: Salud (8,5 % empleador / 4 % trabajador), Pensión (12 % / 4 %) y ARL según nivel de riesgo (0 % trabajador).`,
+          `Prestaciones sociales: Prima (30 días/año en 2 cuotas), Cesantías (1 mes/año), Intereses (12 % anual) y Vacaciones (15 días hábiles/año).`,
+          `Otros conceptos: Caja de Compensación (4 %), SENA (2 %) e ICBF (3 %) cuando no haya exoneración, dotación y auxilio de transporte.`
+        ],
+        veralaya: `Diferencia aportes mensuales a PILA de las provisiones de prestaciones y valida si Veralaya aplica a exoneración de Salud, SENA e ICBF.`,
+        sectionId: `sec-p2`,
+        parentPillar: `p2`
+      },
+      p2a: {
+        badge: `Subnodo 2.1`,
+        law: `Ley 100 de 1993`,
+        title: `Aportes al Sistema de Seguridad Social`,
+        summary: `Deben liquidarse mensualmente sobre el Ingreso Base de Cotización (IBC) de los 11 empleados.`,
+        points: [
+          `Salud: 8,5 % empleador (sujeto a exoneraciones legales por renta y nivel salarial) y 4 % trabajador.`,
+          `Pensión: 12 % empleador y 4 % trabajador (+ Fondo de Solidaridad Pensional cuando corresponda).`,
+          `ARL: 100 % a cargo de Veralaya Beach SAS según la clase de riesgo del cargo.`
+        ],
+        veralaya: `Verifica cada mes las planillas de los 11 colaboradores para evitar sanciones y cobros de aportes omitidos.`,
+        sectionId: `sec-p2`,
+        parentPillar: `p2`
+      },
+      p2b: {
+        badge: `Subnodo 2.2`,
+        law: `CST Arts. 186 y 249`,
+        title: `Liquidación de prestaciones sociales`,
+        summary: `Derechos económicos acumulados por tiempo trabajado. Ejemplo base ($3.000.000/año sin auxilio): Prima $3M, Cesantías $3M, Intereses $360k, Vacaciones $1,5M.`,
+        points: [
+          `Prima y Cesantías: Salario × días trabajados / 360 (incluyen auxilio de transporte cuando legalmente corresponde).`,
+          `Intereses a las cesantías: Cesantías × días × 0,12 / 360.`,
+          `Vacaciones: Salario básico × días trabajados / 720 (no incluye auxilio de transporte).`
+        ],
+        veralaya: `Provisiona mensualmente estos porcentajes en contabilidad para evitar iliquidez en junio, diciembre y liquidaciones.`,
+        sectionId: `sec-p2`,
+        parentPillar: `p2`
+      },
+      p2c: {
+        badge: `Subnodo 2.3`,
+        law: `Parafiscales y auxilios`,
+        title: `CCF (4 %), SENA (2 %), ICBF (3 %) y Dotación`,
+        summary: `Cargas adicionales a cargo exclusivo del empleador para bienestar familiar y apoyo operativo.`,
+        points: [
+          `Caja de Compensación Familiar: 4 % obligatorio sobre la nómina.`,
+          `SENA (2 %) e ICBF (3 %): aplican cuando no exista exoneración legal tributaria.`,
+          `Incluir auxilio de transporte, dotación y licencias remuneradas cuando el trabajador reúna los requisitos.`
+        ],
+        veralaya: `Usa la calculadora del Pilar 02 para proyectar el presupuesto total mensual de tu nómina de 11 personas.`,
+        sectionId: `sec-p2`,
+        parentPillar: `p2`
+      },
+      p3: {
+        badge: `Pilar 03`,
+        law: `Ley 2101/2021 · Ley 2466/2025`,
+        title: `Jornada Laboral y Recargos (Vigentes Nov. 2026)`,
+        summary: `En noviembre de 2026 ya rige plenamente la jornada máxima de 42 horas semanales, la franja nocturna desde las 7:00 p. m. y el recargo dominical del 90 %.`,
+        points: [
+          `Jornada máxima semanal: 42 horas (reducción desde 48 h sin bajar el salario ni derechos adquiridos).`,
+          `Jornada diurna: 6:00 a. m. a 7:00 p. m. Jornada nocturna: 7:00 p. m. a 6:00 a. m. (+35 % de recargo).`,
+          `Horas extras: +25 % diurna y +75 % nocturna (límite general: 2 h/día y 12 h/semana). Dominical y festivo: +90 % en 2026 (sube a 100 % en jul. 2027).`
+        ],
+        veralaya: `Reorganiza los turnos de los 11 colaboradores en 5 o 6 días dentro de 42 h/sem y registra por escrito cualquier hora extra o dominical.`,
+        sectionId: `sec-p3`,
+        parentPillar: `p3`
+      },
+      p3a: {
+        badge: `Subnodo 3.1`,
+        law: `Ley 2101 de 2021 · Art. 161 CST`,
+        title: `Implementación de las 42 horas semanales`,
+        summary: `La reducción gradual culminó en julio de 2026 (48 → 47 → 46 → 44 → 42 horas). En noviembre de 2026 el tope es 42 h.`,
+        points: [
+          `Prohibido disminuir el salario mensual por trabajar 42 horas en lugar de 48.`,
+          `Se puede distribuir en 5 o 6 días semanales garantizando el día de descanso obligatorio.`,
+          `Toda hora que exceda la jornada pactada o la máxima de 42 h pasa a ser trabajo suplementario.`
+        ],
+        veralaya: `Ajusta las mallas de turnos de Veralaya Beach SAS a 42 h/sem para evitar pagos no presupuestados de horas extras.`,
+        sectionId: `sec-p3`,
+        parentPillar: `p3`
+      },
+      p3b: {
+        badge: `Subnodo 3.2`,
+        law: `CST Arts. 160 y 168 · Ley 2466/2025`,
+        title: `Jornada nocturna (35 %) y Horas extras (25 % / 75 %)`,
+        summary: `Con la reforma laboral, el trabajo posterior a las 7:00 p. m. ya causa recargo nocturno del 35 %.`,
+        points: [
+          `Recargo nocturno ordinario: +35 % entre las 7:00 p. m. y las 6:00 a. m.`,
+          `Hora extra diurna: +25 % sobre el valor de la hora ordinaria.`,
+          `Hora extra nocturna: +75 % sobre la hora ordinaria. Máximo 2 horas extras diarias y 12 semanales.`
+        ],
+        veralaya: `Si hay atención o eventos en playa después de las 7:00 p. m., liquida el 35 % nocturno en nómina.`,
+        sectionId: `sec-p3`,
+        parentPillar: `p3`
+      },
+      p3c: {
+        badge: `Subnodo 3.3`,
+        law: `CST Art. 179 · Ley 2466/2025`,
+        title: `Trabajo dominical y festivo: 90 % en 2026`,
+        summary: `El recargo dominical subió a 80 % en jul. 2025, está en 90 % desde jul. 2026 y llegará a 100 % en jul. 2027.`,
+        points: [
+          `Ejemplo: si la hora ordinaria vale $10.000, el recargo del 90 % suma $9.000 para un total de $19.000/hora.`,
+          `Si además es nocturno, los recargos se acumulan según proceda legalmente.`,
+          `Identifica si el trabajo dominical es ocasional o habitual para definir el descanso compensatorio.`
+        ],
+        veralaya: `Simula tus turnos de fin de semana y festivos con la calculadora del Pilar 03.`,
+        sectionId: `sec-p3`,
+        parentPillar: `p3`
+      },
+      p4: {
+        badge: `Pilar 04`,
+        law: `CST Arts. 104–120 · Ley 2466/2025`,
+        title: `Reglamento Interno de Trabajo (RIT) y Debido Proceso`,
+        summary: `Documento obligatorio que fija convivencia, horarios, deberes, escala de faltas y el procedimiento sancionatorio garantista de la Ley 2466 de 2025.`,
+        points: [
+          `Obligatoriedad (Art. 105 CST): empresas comerciales con más de 5 trabajadores permanentes. Veralaya tiene 14: 100 % obligatorio.`,
+          `Debe incluir horarios, obligaciones, escala proporcional de faltas/sanciones, SST y prevención del acoso laboral.`,
+          `Ley 2466 de 2025 exige 7 garantías mínimas en procesos disciplinarios (apertura, hechos, pruebas, descargos, contradicción, decisión motivada e impugnación).`
+        ],
+        veralaya: `Redacta y socializa el RIT con los 14 colaboradores; ninguna sanción disciplinaria será válida si no cumple el debido proceso.`,
+        sectionId: `sec-p4`,
+        parentPillar: `p4`
+      },
+      p4a: {
+        badge: `Subnodo 4.1`,
+        law: `CST Art. 105`,
+        title: `Obligatoriedad por tamaño de empresa`,
+        summary: `El umbral depende de la actividad económica: Comercial >5, Industrial >10, Mixtas >10, Agrícola/ganadera/forestal >20.`,
+        points: [
+          `Con 11 empleados en nómina (y 14 colaboradores totales), Veralaya Beach SAS supera ampliamente el umbral comercial de 5.`,
+          `No contar con RIT expone a sanciones administrativas y deja sin piso legal las sanciones internas.`
+        ],
+        veralaya: `Prioriza la adopción formal del RIT como herramienta de gestión y prevención de conflictos.`,
+        sectionId: `sec-p4`,
+        parentPillar: `p4`
+      },
+      p4b: {
+        badge: `Subnodo 4.2`,
+        law: `CST Arts. 108 y 111–115`,
+        title: `Convivencia, horarios y escala de faltas`,
+        summary: `No puedes sancionar arbitrariamente: la falta y su sanción proporcional deben existir previamente en el RIT o el contrato.`,
+        points: [
+          `Definir horarios de entrada, salida y descansos coherentes con las 42 horas.`,
+          `Graduar faltas: llegadas tarde injustificadas, incumplimiento de procedimientos, ausencias o faltas graves.`,
+          `Incluir normas de Seguridad y Salud en el Trabajo (SST) y canales contra el acoso laboral.`
+        ],
+        veralaya: `Alinea las normas de servicio al cliente y manejo de equipos de playa dentro de la escala disciplinaria.`,
+        sectionId: `sec-p4`,
+        parentPillar: `p4`
+      },
+      p4c: {
+        badge: `Subnodo 4.3`,
+        law: `Ley 2466 de 2025`,
+        title: `7 pasos del debido proceso disciplinario`,
+        summary: `La reforma laboral fortaleció el derecho de defensa del trabajador en cualquier investigación interna.`,
+        points: [
+          `1. Apertura formal, 2. Descripción de hechos, 3. Traslado de pruebas, 4. Descargos del trabajador.`,
+          `5. Controvertir pruebas, 6. Decisión escrita motivada, 7. Posibilidad de impugnar la decisión.`,
+          `Revisar reglas o excepciones específicas aplicables a micro y pequeñas empresas.`
+        ],
+        veralaya: `Recorre el protocolo interactivo de 7 pasos en el Pilar 04 para estandarizar actas y citaciones.`,
+        sectionId: `sec-p4`,
+        parentPillar: `p4`
+      },
+      p5: {
+        badge: `Pilar 05`,
+        law: `CST Arts. 62, 64 y 76–80`,
+        title: `Terminación de Contratos, Prueba y Estabilidad`,
+        summary: `Cómo finalizar relaciones laborales sin indemnizaciones innecesarias ni demandas de reintegro, cumpliendo liquidación final y límites del periodo de prueba.`,
+        points: [
+          `Justa causa (Art. 62 CST): requiere pruebas, escucha/defensa y carta escrita con hechos y causal exacta.`,
+          `Sin justa causa (Art. 64 CST): indemnización según salario (<10 o ≥10 SMMLV en indefinido) o tiempo faltante (fijo/obra, mín. 15 días).`,
+          `Periodo de prueba (Arts. 76–80): por escrito, máx. 2 meses o 1/5 en fijos menores a 1 año. Verificar siempre estabilidad laboral reforzada.`
+        ],
+        veralaya: `Documenta toda falta antes de despedir, calcula correctamente el periodo de prueba en contratos cortos y revisa fueros de salud o maternidad.`,
+        sectionId: `sec-p5`,
+        parentPillar: `p5`
+      },
+      p5a: {
+        badge: `Subnodo 5.1`,
+        law: `CST Arts. 62 y 64`,
+        title: `Justa causa vs Indemnización sin justa causa`,
+        summary: `Despedir con justa causa exime de indemnización solo si la causal está probada y comunicada con precisión.`,
+        points: [
+          `Indefinido < 10 SMMLV: 30 días primer año + 20 días por año adicional o proporcional.`,
+          `Indefinido ≥ 10 SMMLV: 20 días primer año + 15 días por año adicional o proporcional.`,
+          `Término fijo y obra o labor: salarios del tiempo faltante (mínimo 15 días).`
+        ],
+        veralaya: `Nunca alegues motivos genéricos sin pruebas; usa la calculadora del Pilar 05 para estimar el costo de un retiro sin justa causa.`,
+        sectionId: `sec-p5`,
+        parentPillar: `p5`
+      },
+      p5b: {
+        badge: `Subnodo 5.2`,
+        law: `CST Arts. 76–80`,
+        title: `Liquidación final y Periodo de prueba`,
+        summary: `Al terminar el vínculo (incluso por renuncia) se pagan todas las acreencias causadas. El periodo de prueba tiene límites estrictos.`,
+        points: [
+          `Liquidación: salarios pendientes + prima, cesantías e intereses proporcionales + vacaciones + extras/recargos.`,
+          `Periodo de prueba: debe constar por escrito; máximo 2 meses; en fijo < 1 año no supera 1/5 del plazo (ej. 6 meses = ~36 días).`,
+          `No puede pactarse nuevamente en contratos sucesivos entre las mismas partes, salvo excepciones legales.`
+        ],
+        veralaya: `Revisa si los contratos fijos menores a un año en Veralaya tienen bien calculada la quinta parte del periodo de prueba.`,
+        sectionId: `sec-p5`,
+        parentPillar: `p5`
+      },
+      p5c: {
+        badge: `Subnodo 5.3`,
+        law: `Protecciones constitucionales y legales`,
+        title: `Estabilidad laboral reforzada`,
+        summary: `Incluso existiendo justa causa, ciertas situaciones exigen autorización o requisitos especiales antes de terminar el contrato.`,
+        points: [
+          `Trabajadoras embarazadas o en situaciones protegidas de maternidad.`,
+          `Trabajadores con afectaciones de salud que generen estabilidad laboral reforzada.`,
+          `Trabajadores con fuero sindical u otras garantías legales especiales.`
+        ],
+        veralaya: `Incluye un filtro obligatorio de estabilidad reforzada antes de emitir cualquier carta de terminación o no renovación.`,
+        sectionId: `sec-p5`,
+        parentPillar: `p5`
+      }
+    };
+
+    const PILLAR_ORDER = [`p1`, `p2`, `p3`, `p4`, `p5`];
+
+    const DUE_PROCESS_STEPS = [
+      {
+        tag: `Garantía 01 de 07`,
+        title: `Comunicación formal de apertura del proceso`,
+        desc: `Notifica por escrito al colaborador el inicio formal de la actuación disciplinaria, dejando constancia de recibido y citación con tiempo razonable para preparar su defensa.`
+      },
+      {
+        tag: `Garantía 02 de 07`,
+        title: `Descripción precisa de los hechos y conductas`,
+        desc: `Detalla las circunstancias de tiempo, modo y lugar de la conducta investigada y señala la falta específica en el Reglamento Interno de Trabajo o el contrato.`
+      },
+      {
+        tag: `Garantía 03 de 07`,
+        title: `Traslado integral de las pruebas`,
+        desc: `Entrega o pon a disposición del trabajador todas las pruebas documentales, registros de horario o testimonios que sustentan la apertura del proceso.`
+      },
+      {
+        tag: `Garantía 04 de 07`,
+        title: `Oportunidad para presentar descargos`,
+        desc: `Escucha la versión libre del colaborador en audiencia o diligencia de descargos levantando un acta fiel y firmada por los participantes.`
+      },
+      {
+        tag: `Garantía 05 de 07`,
+        title: `Posibilidad de controvertir las pruebas`,
+        desc: `Permite que el trabajador aporte sus propios soportes, testigos o explicaciones técnicas para desvirtuar las pruebas allegadas por la empresa.`
+      },
+      {
+        tag: `Garantía 06 de 07`,
+        title: `Decisión escrita y debidamente motivada`,
+        desc: `Emite una resolución escrita que valore los descargos y explique las razones jurídicas y fácticas de la sanción proporcional o el archivo del caso.`
+      },
+      {
+        tag: `Garantía 07 de 07`,
+        title: `Posibilidad de impugnar la decisión`,
+        desc: `Indica al trabajador el recurso o mecanismo interno disponible dentro de la empresa para apelar o solicitar revisión de la sanción impuesta.`
+      }
+    ];
+
+    let appState = {
+      activeNode: `p1`,
+      showSubnodes: true,
+      dueStep: 0,
+      checklist: {}
+    };
+
+    function formatCOP(amount) {
+      const rounded = Math.round(amount || 0);
+      return `$` + rounded.toLocaleString(`es-CO`);
+    }
+
+    function selectNode(nodeId) {
+      const data = MIND_MAP_DATA[nodeId];
+      if (!data) return;
+
+      appState.activeNode = nodeId;
+      const parentId = data.parentPillar || `p1`;
+
+      // Update SVG node active classes
+      document.querySelectorAll(`.mm-node`).forEach(function (el) {
+        el.classList.remove(`is-selected`);
+        el.classList.remove(`is-branch-active`);
+      });
+      const targetNode = document.getElementById(`node-` + nodeId);
+      if (targetNode) targetNode.classList.add(`is-selected`);
+
+      // Highlight parent pillar & its subnodes
+      const parentNode = document.getElementById(`node-` + parentId);
+      if (parentNode && nodeId !== `root`) {
+        parentNode.classList.add(`is-selected`);
+      }
+      document.querySelectorAll(`.mm-node--sub[data-parent="` + parentId + `"]`).forEach(function (sub) {
+        sub.classList.add(`is-branch-active`);
+      });
+
+      // Highlight SVG links
+      document.querySelectorAll(`.mm-link`).forEach(function (lnk) {
+        lnk.classList.remove(`is-active`);
+      });
+      const activeLink = document.getElementById(`link-` + parentId);
+      if (activeLink) activeLink.classList.add(`is-active`);
+
+      document.querySelectorAll(`.mm-link--sub`).forEach(function (subLnk) {
+        subLnk.classList.remove(`is-active`);
+      });
+      document.querySelectorAll(`.mm-link--sub.sub-of-` + parentId).forEach(function (subLnk) {
+        subLnk.classList.add(`is-active`);
+      });
+
+      // Update top pillar pill buttons
+      document.querySelectorAll(`.pillar-pill-btn`).forEach(function (btn) {
+        const isMatch = btn.getAttribute(`data-pill`) === parentId;
+        btn.classList.toggle(`is-active`, isMatch);
+      });
+
+      // Update progress badge
+      const stepIdx = PILLAR_ORDER.indexOf(parentId);
+      const progressBadge = document.getElementById(`mm-progress-badge`);
+      if (progressBadge) {
+        progressBadge.textContent = `Paso ` + (stepIdx + 1) + ` de 5`;
+      }
+
+      // Update Inspector Panel
+      const badgeEl = document.getElementById(`insp-badge`);
+      const lawEl = document.getElementById(`insp-law`);
+      const titleEl = document.getElementById(`insp-title`);
+      const summaryEl = document.getElementById(`insp-summary`);
+      const pointsEl = document.getElementById(`insp-points`);
+      const veralayaEl = document.getElementById(`insp-veralaya`);
+
+      if (badgeEl) badgeEl.textContent = data.badge;
+      if (lawEl) lawEl.textContent = data.law;
+      if (titleEl) titleEl.textContent = data.title;
+      if (summaryEl) summaryEl.textContent = data.summary;
+      if (veralayaEl) veralayaEl.textContent = data.veralaya;
+
+      if (pointsEl) {
+        pointsEl.innerHTML = ``;
+        data.points.forEach(function (pt) {
+          const li = document.createElement(`li`);
+          li.textContent = pt;
+          pointsEl.appendChild(li);
+        });
+      }
+
+      persistState();
+    }
+
+    function handleNodeKey(evt, nodeId) {
+      if (evt.key === `Enter` || evt.key === ` `) {
+        evt.preventDefault();
+        selectNode(nodeId);
+      }
+    }
+
+    function stepPillar(delta) {
+      const currentData = MIND_MAP_DATA[appState.activeNode] || MIND_MAP_DATA.p1;
+      const currentPillar = currentData.parentPillar || `p1`;
+      let idx = PILLAR_ORDER.indexOf(currentPillar);
+      idx = (idx + delta + PILLAR_ORDER.length) % PILLAR_ORDER.length;
+      selectNode(PILLAR_ORDER[idx]);
+    }
+
+    function jumpToActiveSection() {
+      const currentData = MIND_MAP_DATA[appState.activeNode] || MIND_MAP_DATA.p1;
+      const sec = document.getElementById(currentData.sectionId || `sec-p1`);
+      if (sec) sec.scrollIntoView({ behavior: `smooth`, block: `start` });
+    }
+
+    function toggleAllSubnodes() {
+      appState.showSubnodes = !appState.showSubnodes;
+      applySubnodesVisibility();
+      persistState();
+    }
+
+    function applySubnodesVisibility() {
+      const subLinks = document.getElementById(`mm-sub-links`);
+      const subNodes = document.getElementById(`mm-sub-nodes`);
+      const btn = document.getElementById(`btn-toggle-subnodes`);
+      const displayVal = appState.showSubnodes ? `inline` : `none`;
+      if (subLinks) subLinks.style.display = displayVal;
+      if (subNodes) subNodes.style.display = displayVal;
+      if (btn) btn.textContent = appState.showSubnodes ? `Ocultar subramas` : `Mostrar subramas`;
+    }
+
+    function evaluateContratoRealidad() {
+      const checks = document.querySelectorAll(`.cr-check`);
+      let count = 0;
+      checks.forEach(function (c) {
+        if (c.checked) count += 1;
+      });
+      const badge = document.getElementById(`cr-risk-badge`);
+      const advice = document.getElementById(`cr-advice`);
+      if (!badge || !advice) return;
+
+      badge.className = `tag`;
+      if (count === 0) {
+        badge.classList.add(`tag--ok`);
+        badge.textContent = `Riesgo Bajo (0/5 señales)`;
+        advice.textContent = `Sin señales críticas marcadas. Formaliza por escrito contratos de prestación de servicios basados en entregables concretos (piezas audiovisuales, sesiones fotográficas, parrilla mensual), con autonomía de horarios y coordinación sin subordinación.`;
+      } else if (count <= 2) {
+        badge.classList.add(`tag--warn`);
+        badge.textContent = `Riesgo Moderado (` + count + `/5 señales)`;
+        advice.textContent = `Existen prácticas que pueden interpretarse como subordinación. Ajusta de inmediato los acuerdos con el Videógrafo, Fotógrafo y Community Manager: sustituye control de horario por fechas de entrega y elimina exigencia de permisos.`;
+      } else {
+        badge.classList.add(`tag--alert`);
+        badge.textContent = `Riesgo Alto (` + count + `/5 señales)`;
+        advice.textContent = `Alta probabilidad de que un juez declare contrato realidad. Opciones urgentes: (1) vincularlos por contrato laboral a nómina con seguridad social y prestaciones, o (2) reestructurar radicalmente su prestación hacia entregables autónomos sin horario ni jefe directo.`;
+      }
+    }
+
+    function recalcPayroll() {
+      const salEl = document.getElementById(`calc-salary`);
+      const wrkEl = document.getElementById(`calc-workers`);
+      const arlEl = document.getElementById(`calc-arl`);
+      const exoEl = document.getElementById(`calc-exon`);
+      if (!salEl || !wrkEl || !arlEl || !exoEl) return;
+
+      const salary = Math.max(0, parseFloat(salEl.value) || 0);
+      const workers = Math.max(1, parseInt(wrkEl.value, 10) || 1);
+      const arlRate = parseFloat(arlEl.value) || 0.00522;
+      const exonerated = exoEl.checked;
+
+      // Annual prestaciones (full 360-day year, base without auxilio de transporte)
+      const primaYear = salary;
+      const cesantiasYear = salary;
+      const interesesYear = cesantiasYear * 0.12;
+      const vacacionesYear = salary * 360 / 720;
+
+      // Monthly employer social security + parafiscales
+      const saludRate = exonerated ? 0 : 0.085;
+      const pensionRate = 0.12;
+      const ccfRate = 0.04;
+      const senaIcbfRate = exonerated ? 0 : 0.05; // 2% SENA + 3% ICBF
+
+      const monthlySecParaf = salary * (saludRate + pensionRate + arlRate + ccfRate + senaIcbfRate);
+      const monthlyPrestProv = (primaYear + cesantiasYear + interesesYear + vacacionesYear) / 12;
+      const totalMonthlyOne = salary + monthlySecParaf + monthlyPrestProv;
+      const totalMonthlyAll = totalMonthlyOne * workers;
+
+      const outPC = document.getElementById(`out-prima-ces`);
+      const outIV = document.getElementById(`out-int-vac`);
+      const outOne = document.getElementById(`out-cost-one`);
+      const outAll = document.getElementById(`out-cost-all`);
+      const outN = document.getElementById(`out-n-workers`);
+      const outDet = document.getElementById(`out-payroll-detail`);
+
+      if (outPC) outPC.textContent = formatCOP(primaYear + cesantiasYear);
+      if (outIV) outIV.textContent = formatCOP(interesesYear + vacacionesYear);
+      if (outOne) outOne.textContent = formatCOP(totalMonthlyOne);
+      if (outAll) outAll.textContent = formatCOP(totalMonthlyAll);
+      if (outN) outN.textContent = String(workers);
+      if (outDet) {
+        outDet.textContent = `Para 1 trabajador con salario de ` + formatCOP(salary) + `/mes (año completo): Prima ` + formatCOP(primaYear) + `, Cesantías ` + formatCOP(cesantiasYear) + `, Intereses ` + formatCOP(interesesYear) + `, Vacaciones ` + formatCOP(vacacionesYear) + `. Aportes empleador/mes: ` + formatCOP(monthlySecParaf) + ` + provisión prestacional mensual: ` + formatCOP(monthlyPrestProv) + `.`;
+      }
+    }
+
+    function recalcRecargos() {
+      const hEl = document.getElementById(`rec-hora`);
+      const nEl = document.getElementById(`rec-h-noct`);
+      const edEl = document.getElementById(`rec-h-exd`);
+      const enEl = document.getElementById(`rec-h-exn`);
+      const dEl = document.getElementById(`rec-h-dom`);
+      if (!hEl || !nEl || !edEl || !enEl || !dEl) return;
+
+      const base = Math.max(0, parseFloat(hEl.value) || 0);
+      const hNoct = Math.max(0, parseFloat(nEl.value) || 0);
+      const hExd = Math.max(0, parseFloat(edEl.value) || 0);
+      const hExn = Math.max(0, parseFloat(enEl.value) || 0);
+      const hDom = Math.max(0, parseFloat(dEl.value) || 0);
+
+      // 2026 rates: nocturno +35% (recargo), extra diurna 1.25, extra nocturna 1.75, dominical 1.90
+      const domUnit = base * 1.90;
+      const exnUnit = base * 1.75;
+      const total = (hNoct * base * 0.35) + (hExd * base * 1.25) + (hExn * exnUnit) + (hDom * domUnit);
+
+      const uDomEl = document.getElementById(`out-dom-unit`);
+      const uExnEl = document.getElementById(`out-exn-unit`);
+      const totEl = document.getElementById(`out-rec-total`);
+
+      if (uDomEl) uDomEl.textContent = formatCOP(domUnit);
+      if (uExnEl) uExnEl.textContent = formatCOP(exnUnit);
+      if (totEl) totEl.textContent = formatCOP(total);
+    }
+
+    function selectDueStep(idx) {
+      const step = DUE_PROCESS_STEPS[idx];
+      if (!step) return;
+      appState.dueStep = idx;
+
+      document.querySelectorAll(`.step-btn`).forEach(function (b) {
+        b.classList.toggle(`is-active`, parseInt(b.getAttribute(`data-step`), 10) === idx);
+      });
+
+      const tagEl = document.getElementById(`dp-step-tag`);
+      const titleEl = document.getElementById(`dp-step-title`);
+      const descEl = document.getElementById(`dp-step-desc`);
+      if (tagEl) tagEl.textContent = step.tag;
+      if (titleEl) titleEl.textContent = step.title;
+      if (descEl) descEl.textContent = step.desc;
+
+      persistState();
+    }
+
+    function recalcTermination() {
+      const typeEl = document.getElementById(`term-type`);
+      const salEl = document.getElementById(`term-salary`);
+      const monEl = document.getElementById(`term-months`);
+      const remEl = document.getElementById(`term-rem-days`);
+      if (!typeEl || !salEl || !monEl || !remEl) return;
+
+      const mode = typeEl.value;
+      const salary = Math.max(0, parseFloat(salEl.value) || 0);
+      const months = Math.max(1, parseFloat(monEl.value) || 1);
+      const remDays = Math.max(1, parseFloat(remEl.value) || 1);
+
+      // Periodo de prueba rule: max 60 days (2 months); if fijo < 12 months, max 1/5 of term
+      let trialDays = 60;
+      if (mode === `fijo` && months < 12) {
+        trialDays = Math.min(60, Math.round((months * 30) / 5));
+      }
+
+      // Indemnización calculation (Art. 64 CST)
+      let indemDays = 0;
+      let note = ``;
+      const years = months / 12;
+
+      if (mode === `indef-lt10`) {
+        if (years <= 1) {
+          indemDays = 30;
+        } else {
+          indemDays = 30 + ((years - 1) * 20);
+        }
+        note = `Contrato indefinido (< 10 SMMLV): 30 días por el primer año + 20 días por cada año adicional o proporcional (` + Math.round(indemDays * 10) / 10 + ` días).`;
+      } else if (mode === `indef-ge10`) {
+        if (years <= 1) {
+          indemDays = 20;
+        } else {
+          indemDays = 20 + ((years - 1) * 15);
+        }
+        note = `Contrato indefinido (≥ 10 SMMLV): 20 días por el primer año + 15 días por cada año adicional o proporcional (` + Math.round(indemDays * 10) / 10 + ` días).`;
+      } else {
+        indemDays = Math.max(15, remDays);
+        note = `Contrato a término fijo / obra o labor: salarios equivalentes al tiempo faltante para terminar el plazo o la labor, con un mínimo legal de 15 días.`;
+      }
+
+      const indemVal = (salary / 30) * indemDays;
+
+      const tMaxEl = document.getElementById(`out-trial-max`);
+      const iDaysEl = document.getElementById(`out-indem-days`);
+      const iValEl = document.getElementById(`out-indem-val`);
+      const noteEl = document.getElementById(`out-term-note`);
+
+      if (tMaxEl) {
+        tMaxEl.textContent = trialDays === 60 ? `60 días (2 meses)` : trialDays + ` días (1/5 del plazo)`;
+      }
+      if (iDaysEl) iDaysEl.textContent = (Math.round(indemDays * 10) / 10) + ` días`;
+      if (iValEl) iValEl.textContent = formatCOP(indemVal);
+      if (noteEl) noteEl.textContent = note;
+    }
+
+    function toggleChecklistItem(id, checkbox) {
+      appState.checklist[id] = Boolean(checkbox.checked);
+      updateChecklistUI();
+      persistState();
+    }
+
+    function updateChecklistUI() {
+      const items = document.querySelectorAll(`.check-item`);
+      let done = 0;
+      const total = items.length;
+
+      items.forEach(function (label) {
+        const id = label.getAttribute(`data-check-id`);
+        const cb = label.querySelector(`input[type="checkbox"]`);
+        const isDone = Boolean(appState.checklist[id]);
+        if (cb) cb.checked = isDone;
+        label.classList.toggle(`is-done`, isDone);
+        if (isDone) done += 1;
+      });
+
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+      const statusTag = document.getElementById(`plan-status-tag`);
+      const pctEl = document.getElementById(`plan-pct`);
+      const barFill = document.getElementById(`plan-progress-fill`);
+      const barWrap = document.getElementById(`plan-progressbar`);
+
+      if (statusTag) statusTag.textContent = done + ` de ` + total + ` completadas`;
+      if (pctEl) pctEl.textContent = pct + ` %`;
+      if (barFill) barFill.style.width = pct + `%`;
+      if (barWrap) barWrap.setAttribute(`aria-valuenow`, String(pct));
+    }
+
+    function resetChecklist(btn) {
+      const fb = document.getElementById(`plan-feedback`);
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `Confirmar reinicio`;
+        if (fb) fb.textContent = `Haz clic una vez más para reiniciar las 8 tareas de cumplimiento.`;
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.textContent = `Reiniciar avance`;
+      appState.checklist = {};
+      updateChecklistUI();
+      persistState();
+      if (fb) fb.textContent = `Progreso reiniciado a 0 de 8 tareas completadas.`;
+    }
+
+    function exportSummary() {
+      const items = document.querySelectorAll(`.check-item`);
+      const lines = [
+        `VERALAYA BEACH SAS (@veralayabeach) - RESUMEN DE CUMPLIMIENTO LABORAL (NOVIEMBRE 2026)`,
+        `Base legal: Codigo Sustantivo del Trabajo (CST), Ley 2101 de 2021 y Ley 2466 de 2025`,
+        `Equipo: 14 colaboradores (11 en nomina + 3 externos sin contrato)`,
+        ``,
+        `ESTADO DEL PLAN DE ACCION:`
+      ];
+      items.forEach(function (label) {
+        const id = label.getAttribute(`data-check-id`);
+        const title = label.querySelector(`strong`) ? label.querySelector(`strong`).textContent : id;
+        const mark = appState.checklist[id] ? `[COMPLETADO]` : `[PENDIENTE]`;
+        lines.push(mark + ` ` + title);
+      });
+      const content = lines.join(`\n`);
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: content,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: `plan_laboral_veralaya_beach_2026.txt`
+        });
+      }
+      const fb = document.getElementById(`plan-feedback`);
+      if (fb) fb.textContent = `Resumen de cumplimiento exportado como plan_laboral_veralaya_beach_2026.txt.`;
+    }
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState(appState);
+        } catch (err) {
+          // Ignore transient host persistence errors
+        }
+      }
+    }
+
+    async function initApp() {
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.activeNode && MIND_MAP_DATA[saved.activeNode]) {
+              appState.activeNode = saved.activeNode;
+            }
+            if (typeof saved.showSubnodes === `boolean`) {
+              appState.showSubnodes = saved.showSubnodes;
+            }
+            if (typeof saved.dueStep === `number` && DUE_PROCESS_STEPS[saved.dueStep]) {
+              appState.dueStep = saved.dueStep;
+            }
+            if (saved.checklist && typeof saved.checklist === `object`) {
+              appState.checklist = saved.checklist;
+            }
+          }
+        } catch (err) {
+          // Fallback to default state
+        }
+      }
+
+      applySubnodesVisibility();
+      selectNode(appState.activeNode);
+      selectDueStep(appState.dueStep);
+      updateChecklistUI();
+      evaluateContratoRealidad();
+      recalcPayroll();
+      recalcRecargos();
+      recalcTermination();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
